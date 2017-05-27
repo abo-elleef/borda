@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+  <div ion-item *ngFor="let chapter of chapters" (click)="openChapter(chapter)">
+    <h2>{{chapter.name}}</h2>
+    <p>{{chapter.desc}}</p>
+  </div>  
+</ion-list>
+</ion-content>
