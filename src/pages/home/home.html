@@ -1,17 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>
+      الفصول
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-list>
+  <div ion-item *ngFor="let chapter of chapters" (click)="openChapter(chapter)">
+    <h2>{{chapter.name}}</h2>
+    <p>{{chapter.desc}}</p>
+  </div>  
+</ion-list>
 </ion-content>
