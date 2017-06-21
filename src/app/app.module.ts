@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdMob } from '@ionic-native/admob';
+import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AdMob } from '@ionic-native/admob';
     StatusBar,
     SplashScreen,
     AdMob,
+    DeviceOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

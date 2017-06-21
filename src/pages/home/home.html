@@ -1,16 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      الفصول
-    </ion-title>
+  <ion-navbar >
+    <ion-title>      الفصول    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="customGreen">
 <ion-list>
-  <div ion-item *ngFor="let chapter of chapters" (click)="openChapter(chapter)">
+  <div ion-item *ngFor="let chapter of chapters" (click)="openChapter(chapter)" class="clearBG">
     <h2>{{chapter.name}}</h2>
     <p>{{chapter.desc}}</p>
-  </div>  
+  </div>
 </ion-list>
 </ion-content>
