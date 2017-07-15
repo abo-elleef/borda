@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
- import { ChapterDetailsModule } from '../pages/chapter-details/chapter-details.module';
+import { ChapterDetailsModule } from '../pages/chapter-details/chapter-details.module';
+import { SettingsModule } from '../pages/settings/settings.module';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -11,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdMob } from '@ionic-native/admob';
+import { Network } from '@ionic-native/network';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { AdMob } from '@ionic-native/admob';
   imports: [
     BrowserModule,
     ChapterDetailsModule,
+    SettingsModule,
     IonicModule.forRoot(MyApp,{
       backButtonIcon: 'ios-arrow-forward'
     })
@@ -38,6 +41,7 @@ import { AdMob } from '@ionic-native/admob';
     StatusBar,
     SplashScreen,
     AdMob,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

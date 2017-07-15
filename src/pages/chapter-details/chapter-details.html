@@ -15,11 +15,19 @@
 
 <ion-content padding class="customGreen">
 <ion-grid class="clearBG">
-  <ion-row *ngFor="let line of chapter.lines" class="clearBG">
-    <ion-col col-auto pull-0 class="clearBG">
+  <ion-row *ngFor="let line of intro" class="clearBG">
+    <ion-col col-12 class="clearBG text-center">
       {{line.right}}
     </ion-col>
-    <ion-col col-auto pull-2 class="clearBG" >
+    <ion-col col-12 class="clearBG text-center" >
+      {{line.left}}
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let line of chapter.lines; let index = index;" class="clearBG">
+    <ion-col col-12 class="clearBG right">
+      {{prefixer + index + 1}} - {{line.right}}
+    </ion-col>
+    <ion-col col-12 class="clearBG left" >
       {{line.left}}
     </ion-col>
   </ion-row>

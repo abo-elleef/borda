@@ -6,7 +6,7 @@
 
 <ion-content padding class="customGreen">
 <ion-list>
-  <div ion-item *ngFor="let chapter of chapters" (click)="openChapter(chapter)" class="clearBG">
+  <div ion-item *ngFor="let chapter of chapters; let index = index;" (click)="openChapter(chapter, index)" class="clearBG">
     <h2>{{chapter.name}}</h2>
     <p>{{chapter.desc}}</p>
   </div>

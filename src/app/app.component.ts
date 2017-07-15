@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdMob } from '@ionic-native/admob';
 
+
+
 import { TabsPage } from '../pages/tabs/tabs';
 interface AdMobType {
   banner: string,

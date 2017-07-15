@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
+
 /**
  * Generated class for the ChapterDetails page.
  *
@@ -15,11 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChapterDetails {
   chapter: any;
-
+  intro: any;
+  prefixer: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log(navParams.data.chapter);
     this.chapter = navParams.data.chapter;
+    this.prefixer = navParams.data.prefixer;
+    this.intro = [
+      {right: 'مولاي صلي وسلم دائما ابدأ', left: 'علي حيبيك خير الخلق كلهم'},
+      {right: 'يا رب صلي علي محمد وعلي', left: 'سادتنا اله وصحبه الكرم'}
+
+    ];
   };
 
   ionViewDidLoad() {
