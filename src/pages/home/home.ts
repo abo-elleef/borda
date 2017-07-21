@@ -1,16 +1,33 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ChapterDetails} from '../chapter-details/chapter-details';
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers:[NativeStorage]
 })
 export class HomePage {
-  chapters: any;
+  chapters: any = [{lines:[{}]}];
   prefixer: number = 0;
+  fontSizeClass: string = 'font-16';
+  fontFaceClass: string = 'kufi';
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private _nativeStorage: NativeStorage) {
+  }
+
+  ionViewDidEnter(){
+    this._nativeStorage.getItem('fontSize').then(data =>{
+      this.fontSizeClass = data ?  'font-'+data : this.fontSizeClass;
+      console.log(this.fontSizeClass);
+    });
+    this._nativeStorage.getItem('fontFace').then(data => {
+      this.fontFaceClass = data ? data: this.fontFaceClass
+      console.log(this.fontFaceClass);
+    });
+  };
+  ionViewWillEnter() {
     this.chapters = [
       {
         id: '1',
@@ -975,7 +992,6 @@ export class HomePage {
       }
     ];
   }
-
   openChapter(chapter, index) {
     this.prefixer = 0;
     for(var i =0; i < index; i++){

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {NativeStorage} from "@ionic-native/native-storage";
 
 
 
@@ -13,23 +14,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-chapter-details',
   templateUrl: 'chapter-details.html',
+  providers:[NativeStorage]
 })
 export class ChapterDetails {
   chapter: any;
   intro: any;
   prefixer: number;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  fontSizeClass: string = 'font-16';
+  fontFaceClass: string = 'kufi';
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _nativeStorage: NativeStorage) {
     this.chapter = navParams.data.chapter;
-    this.prefixer = navParams.data.prefixer;
+    this.prefixer = navParams.data.prefixer % 167;
     this.intro = [
       {right: 'مولاي صلي وسلم دائما ابدأ', left: 'علي حيبيك خير الخلق كلهم'},
-      {right: 'يا رب صلي علي محمد وعلي', left: 'سادتنا اله وصحبه الكرم'}
+      {right: 'مولاي صلي وسلم دائما ابدأ', left: 'على النبي وأل البيت كلهم'}
 
     ];
   };
-
-  ionViewDidLoad() {
+  ionViewWillEnter() {
+    this._nativeStorage.getItem('fontSize').then(data => {
+      this.fontSizeClass = data ? 'font-' + data : this.fontSizeClass;
+      console.log(this.fontSizeClass);
+    });
+    this._nativeStorage.getItem('fontFace').then(data => {
+      this.fontFaceClass = data ? data : this.fontFaceClass;
+      console.log(this.fontFaceClass);
+    })
   }
 
 }

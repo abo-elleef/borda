@@ -4,11 +4,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="customGreen">
+<ion-content padding class="{{fontSizeClass}} {{fontFaceClass}} customGreen">
 <ion-list>
   <div ion-item *ngFor="let chapter of chapters; let index = index;" (click)="openChapter(chapter, index)" class="clearBG">
-    <h2>{{chapter.name}}</h2>
-    <p>{{chapter.desc}}</p>
+    <h2> {{chapter.name}} </h2>
+    <span> {{chapter.desc}} </span>
   </div>
 </ion-list>
 </ion-content>
