@@ -18,7 +18,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 export class Settings {
   fontSizeClass: string = 'font-16';
   fontSize: number = 16;
-  fontFaceClass: string = 'kufi';
+  fontFaceClass: string = 'amiri';
   constructor(public navCtrl: NavController, public navParams: NavParams, private _nativeStorage: NativeStorage) {
 
   }
@@ -26,7 +26,9 @@ export class Settings {
   ionViewWillEnter() {
     this._nativeStorage.getItem('fontSize').then(data =>{
       this.fontSizeClass = data ?  'font-'+data : this.fontSizeClass;
-      console.log(this.fontSizeClass);
+      this.fontSize = data;
+
+
     });
     this._nativeStorage.getItem('fontFace').then(data => {
       this.fontFaceClass = data ? data: this.fontFaceClass

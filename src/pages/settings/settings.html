@@ -14,15 +14,13 @@
 
 
 <ion-content padding class="customGreen {{fontSizeClass}} {{fontFaceClass}}">
-  <ion-list >
-    <ion-list-header>
-       حجم الخط  {{fontSize}}
-    </ion-list-header>
+  <ion-list>
     <ion-item>
       <ion-range [(ngModel)]="fontSize" min="14" max="24" step="2" snaps="true" (ngModelChange)="sliderChanged(fontSize)">
         <ion-icon range-left name="md-add-circle"></ion-icon>
         <ion-icon range-right small name="md-remove-circle"></ion-icon>
       </ion-range>
+      حجم الخط  {{fontSize}}
     </ion-item>
   </ion-list>
 
@@ -32,12 +30,17 @@
     </ion-list-header>
     <ion-item>
       <ion-label style="font-family: amiri">الخط الأميري</ion-label>
-      <ion-radio checked="true" value="amiri" (click)="changeFont('amiri')"></ion-radio>
+      <ion-radio [checked]="fontFaceClass == 'amiri'" value="amiri" (click)="changeFont('amiri')"></ion-radio>
     </ion-item>
     <ion-item>
       <ion-label style="font-family: kufi">الخط الكوفي</ion-label>
-      <ion-radio checked="false" value="kufi" (click)="changeFont('kufi')"></ion-radio>
+      <ion-radio [checked]="fontFaceClass == 'kufi'" value="kufi" (click)="changeFont('kufi')"></ion-radio>
     </ion-item>
+    <ion-item>
+      <ion-label style="font-family: cairo">الخط القاهري</ion-label>
+      <ion-radio [checked]="fontFaceClass == 'cairo'" value="cairo" (click)="changeFont('cairo')"></ion-radio>
+    </ion-item>
+
   </ion-list>
 
 </ion-content>

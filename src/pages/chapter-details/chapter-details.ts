@@ -21,7 +21,7 @@ export class ChapterDetails {
   intro: any;
   prefixer: number;
   fontSizeClass: string = 'font-16';
-  fontFaceClass: string = 'kufi';
+  fontFaceClass: string = 'amiri';
   constructor(public navCtrl: NavController, public navParams: NavParams, private _nativeStorage: NativeStorage) {
     this.chapter = navParams.data.chapter;
     this.prefixer = navParams.data.prefixer % 167;

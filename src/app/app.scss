@@ -34,6 +34,12 @@
   font-style: normal;
 }
 @font-face {
+  font-family: 'cairo';
+  src: url('../assets/fonts/Cairo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: 'amiri';
   src: url('../assets/fonts/amiri-quran.ttf') format('truetype');
   font-weight: normal;
@@ -54,12 +60,15 @@
 }
 .kufi, .kufi *{ font-family: 'kufi';}
 .amiri, .amiri *{ font-family: 'amiri';}
+.cairo, .cairo *{ font-family: 'cairo';}
+.font-12,.font-12 *{ font-size: 12px !important;}
 .font-14,.font-14 *{ font-size: 14px !important;}
 .font-16,.font-16 *{ font-size: 16px !important;}
 .font-18,.font-18 *{ font-size: 18px !important;}
 .font-20,.font-20 *{ font-size: 20px !important;}
 .font-22,.font-22 *{ font-size: 22px !important;}
 .font-24,.font-24 *{ font-size: 24px !important;}
+.font-26,.font-26 *{ font-size: 26px !important;}
 ion-icon{
   font-family: "Ionicons" !important;
 }

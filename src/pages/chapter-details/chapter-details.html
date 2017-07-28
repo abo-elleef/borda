@@ -13,24 +13,16 @@
 </ion-header>
 
 
-<ion-content class="customGreen {{fontSizeClass}} {{fontFaceClass}}">
-<ion-grid class="clearBG">
-  <ion-row *ngFor="let line of intro" class="clearBG">
-    <ion-col col-12 class="clearBG chapter-title right">
-      {{line.right}}
-    </ion-col>
-    <ion-col col-12 class="clearBG chapter-title left" >
-      {{line.left}}
-    </ion-col>
-  </ion-row>
-  <ion-row *ngFor="let line of chapter.lines; let index = index;" class="clearBG">
-    <ion-col col-12 class="clearBG right">
-      {{prefixer + index + 1}} - {{line.right}}
-    </ion-col>
-    <ion-col col-12 class="clearBG left" >
-      {{line.left}}
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-content padding class="customGreen {{fontSizeClass}} {{fontFaceClass}}">
+  <div *ngFor="let line of intro" class="clearBG chapter_body">
+      <p class="clearBG chapter-title" >{{line.right}}</p>
+      <p class="clearBG chapter-title" >{{line.left}}</p>
+      <p class="separator">  <ion-icon name="ios-more-outline"></ion-icon></p>
+  </div>
+  <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body ">
+      <p >{{prefixer + index + 1}} - {{line.right}}</p>
+      <p >{{line.left}}</p>
+      <p class="separator">  <ion-icon name="ios-more-outline"></ion-icon></p>
+  </div>
 
 </ion-content>

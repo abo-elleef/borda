@@ -1,17 +1,19 @@
 page-home {
-  ion-list{
-    div{
-      h2 {
-        font-size: 20px !important;
-        font-weight: bold;
-      }
+  .chapater-name {
+    font-weight: bold;
+  }
 
-      p{
-        font-size:14px !important;
-      }
-
-    }
-
+  .chapter-desc {
+    font-size: 14px !important;
+  }
+  .chapter_number{
+    background-color: $dark-green;
+    border-radius: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $light-green;
   }
 
 }
+
+
