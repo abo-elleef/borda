@@ -7,6 +7,8 @@ import { AdMob } from '@ionic-native/admob';
 
 
 import { TabsPage } from '../pages/tabs/tabs';
+import {HomePage} from "../pages/home/home";
+import {Intro} from "../pages/intro/intro";
 interface AdMobType {
   banner: string,
   interstitial: string
@@ -16,7 +18,8 @@ interface AdMobType {
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  // rootPage:any = TabsPage;
+  rootPage:any = Intro;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private admob: AdMob) {
     platform.ready().then(() => {

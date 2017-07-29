@@ -1,6 +1,7 @@
 page-home {
-  .chapater-name {
-    font-weight: bold;
+  ion-card{
+    background-color: $dark-green !important;
+    color: $light-green;
   }
 
   .chapter-desc {

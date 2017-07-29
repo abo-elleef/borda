@@ -13,6 +13,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdMob } from '@ionic-native/admob';
 import { Network } from '@ionic-native/network';
+import {Intro} from "../pages/intro/intro";
+import {IntroModule} from "../pages/intro/intro.module";
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { Network } from '@ionic-native/network';
     BrowserModule,
     ChapterDetailsModule,
     SettingsModule,
+    IntroModule,
     IonicModule.forRoot(MyApp,{
       backButtonIcon: 'ios-arrow-forward'
     })
@@ -33,9 +36,9 @@ import { Network } from '@ionic-native/network';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ContactPage,
-    HomePage,
     TabsPage,
+    Intro,
+    HomePage
   ],
   providers: [
     StatusBar,
