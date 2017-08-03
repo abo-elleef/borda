@@ -45,6 +45,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'uthmani';
+  src: url('../assets/fonts/UthmanicHafs1.otf');
+  font-weight: normal;
+  font-style: normal;
+}
 *{
   direction: rtl;
   font-family: 'kufi-bold';
@@ -61,6 +67,8 @@
 .kufi, .kufi *{ font-family: 'kufi';}
 .amiri, .amiri *{ font-family: 'amiri';}
 .cairo, .cairo *{ font-family: 'cairo';}
+.uthmani, .uthmani *{ font-family: 'uthmani';}
+
 .font-12,.font-12 *{ font-size: 12px !important;}
 .font-14,.font-14 *{ font-size: 14px !important;}
 .font-16,.font-16 *{ font-size: 16px !important;}

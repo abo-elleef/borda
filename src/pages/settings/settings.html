@@ -63,10 +63,15 @@
           <ion-label style="font-family: cairo">الخط القاهري</ion-label>
           <ion-radio [checked]="fontFaceClass == 'cairo'" value="cairo" (click)="changeFont('cairo')"></ion-radio>
         </ion-item>
+        <ion-item class="clearBG">
+          <ion-label style="font-family: uthmani">الخط العثماني</ion-label>
+          <ion-radio [checked]="fontFaceClass == 'uthmani'" value="uthmani" (click)="changeFont('uthmani')"></ion-radio>
+        </ion-item>
       </ion-list>
     </ion-card-content>
 
   </ion-card>
+
   <!--<ion-list radio-group>-->
     <!--<ion-list-header>-->
       <!--نوع الخط-->
