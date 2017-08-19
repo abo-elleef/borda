@@ -1,6 +1,13 @@
 page-intro {
   ion-card{
+    //background-color: transparent !important;
     background-color: $dark-green !important;
     color: $light-green;
+    font-size: 6vw !important ;
+    background-image: url("../assets/images/green3.jpg") !important;
+    //background-image: url("../../assets/images/green4.jpg") !important;
+  }
+  ion-content{
+    //background-image: url("../../assets/images/green3.jpg") !important;
   }
 }

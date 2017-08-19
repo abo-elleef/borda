@@ -3,8 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {Settings} from "../settings/settings";
 import {ChapterDetails} from "../chapter-details/chapter-details";
-import {Mohmadya, Modaraya} from '../../services/borda'
-import {NativeStorage} from "@ionic-native/native-storage";
 
 /**
  * Generated class for the Intro page.
@@ -15,30 +13,29 @@ import {NativeStorage} from "@ionic-native/native-storage";
 @IonicPage()
 @Component({
   selector: 'page-intro',
-  templateUrl: 'intro.html',
-  providers:[NativeStorage]
+  templateUrl: 'intro.html'
 })
 export class Intro {
-  fontSizeClass: string = 'font-16';
-  fontSize: number = 16;
-  fontFaceClass: string = 'cairo';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _nativeStorage: NativeStorage) {
+  // fontSizeClass: string = 'font-16';
+  // fontSize: number = 16;
+  // fontFaceClass: string = 'cairo';
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Intro');
+    // console.log('ionViewDidLoad Intro');
   }
   ionViewWillEnter() {
-    this._nativeStorage.getItem('fontSize').then(data =>{
-      this.fontSizeClass = data ?  'font-'+data : this.fontSizeClass;
-      this.fontSize = data;
-
-
-    });
-    this._nativeStorage.getItem('fontFace').then(data => {
-      this.fontFaceClass = data ? data: this.fontFaceClass
-      console.log(this.fontFaceClass);
-    });
+    // this._nativeStorage.getItem('fontSize').then(data =>{
+    //   this.fontSizeClass = data ?  'font-'+data : this.fontSizeClass;
+    //   this.fontSize = data;
+    //
+    //
+    // });
+    // this._nativeStorage.getItem('fontFace').then(data => {
+    //   this.fontFaceClass = data ? data: this.fontFaceClass
+    //   console.log(this.fontFaceClass);
+    // });
   }
   openSettingsPage(){
     this.navCtrl.push(Settings);

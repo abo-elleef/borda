@@ -3,11 +3,6 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdMob } from '@ionic-native/admob';
-
-
-
-import { TabsPage } from '../pages/tabs/tabs';
-import {HomePage} from "../pages/home/home";
 import {Intro} from "../pages/intro/intro";
 interface AdMobType {
   banner: string,

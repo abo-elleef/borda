@@ -1,15 +1,15 @@
-<ion-header class="{{fontFaceClass}}">
+<ion-header class="uthmani">
   <ion-navbar >
     <ion-title> الفصول </ion-title>
-    <ion-buttons end >
-      <button class="clearBG" large (click)="openSettingsPage()">
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-buttons>
+    <!--<ion-buttons end >-->
+      <!--<button class="clearBG" large (click)="openSettingsPage()">-->
+        <!--<ion-icon name="settings"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="{{fontSizeClass}} {{fontFaceClass}} customGreen">
+<ion-content padding class="uthmani customGreen">
   <ion-card padding text-center *ngFor="let chapter of chapters; let index = index;" (click)="openChapter(index)">
       {{chapter.id}} - {{chapter.desc}}
   </ion-card>

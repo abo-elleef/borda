@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 import {Settings} from "../settings/settings";
-import {NativeStorage} from "@ionic-native/native-storage";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 import {Borda, Modaraya, Mohmadya} from '../../services/borda';
@@ -20,20 +19,19 @@ import {Borda, Modaraya, Mohmadya} from '../../services/borda';
 @Component({
   selector: 'page-chapter-details',
   templateUrl: 'chapter-details.html',
-  providers:[NativeStorage, SocialSharing, Clipboard]
+  providers:[SocialSharing, Clipboard]
 })
 export class ChapterDetails {
   chapter: any;
   intro: any;
   prefixer: number;
-  fontSizeClass: string = 'font-16';
-  fontSizeClassTitle = 'font-18';
-  fontFaceClass: string = 'amiri';
+  // fontSizeClass: string = 'font-16';
+  // fontSizeClassTitle = 'font-18';
+  // fontFaceClass: string = 'amiri';
   network_exist: Boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _nativeStorage: NativeStorage,
     private network: Network,
     private _sharer: SocialSharing,
     private _clipboard: Clipboard
@@ -68,13 +66,13 @@ export class ChapterDetails {
     ];
   };
   ionViewWillEnter() {
-    this._nativeStorage.getItem('fontSize').then(data => {
-      this.fontSizeClass = data ? 'font-' + data : this.fontSizeClass;
-      this.fontSizeClassTitle = data ? 'font-' +(data + 2) : 'font-20';
-    });
-    this._nativeStorage.getItem('fontFace').then(data => {
-      this.fontFaceClass = data ? data : this.fontFaceClass;
-    })
+    // this._nativeStorage.getItem('fontSize').then(data => {
+    //   this.fontSizeClass = data ? 'font-' + data : this.fontSizeClass;
+    //   this.fontSizeClassTitle = data ? 'font-' +(data + 2) : 'font-20';
+    // });
+    // this._nativeStorage.getItem('fontFace').then(data => {
+    //   this.fontFaceClass = data ? data : this.fontFaceClass;
+    // })
   }
   ionViewDidLoad(){
     this.network_exist = this.network.type != 'none';
@@ -96,9 +94,10 @@ export class ChapterDetails {
     this._sharer.share(message);
   }
   nextChapter(index){
+    this.navCtrl.pop();
     this.navCtrl.push(ChapterDetails,{
       index: index
-    })
+    });
 
   }
 

@@ -4,22 +4,22 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header class="{{fontFaceClass}}">
+<ion-header class="uthmani">
 
   <ion-navbar>
     <ion-title>{{chapter.name}}</ion-title>
-    <ion-buttons end>
-      <button class="clearBG" large (click)="openSettingsPage()">
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-buttons>
+    <!--<ion-buttons end>-->
+      <!--<button class="clearBG" large (click)="openSettingsPage()">-->
+        <!--<ion-icon name="settings"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding class="customGreen  {{fontFaceClass}}"> {{fontSizeClass}}
-  <div *ngFor="let line of intro" class="clearBG chapter_body ">{{fontSizeClassTitle }}
+<ion-content padding class="customGreen  uthmani">
+  <div *ngFor="let line of intro" class="clearBG chapter_body ">
     <p class="clearBG chapter-title">{{line.right}}</p>
     <p class="clearBG chapter-title">{{line.left}}</p>
     <p class="separator"> . . . </p>
