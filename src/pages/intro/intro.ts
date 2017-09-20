@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {Settings} from "../settings/settings";
+import {Bordas} from '../../services/borda';
 import {ChapterDetails} from "../chapter-details/chapter-details";
 
 /**
@@ -19,7 +20,9 @@ export class Intro {
   // fontSizeClass: string = 'font-16';
   // fontSize: number = 16;
   // fontFaceClass: string = 'cairo';
+  bordas: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.bordas = Bordas
   }
 
   ionViewDidLoad() {
@@ -40,18 +43,8 @@ export class Intro {
   openSettingsPage(){
     this.navCtrl.push(Settings);
   }
-  openHomePage(){
-    this.navCtrl.push(HomePage);
-  }
-  openMohmadyaPage(){
-    this.navCtrl.push(ChapterDetails,{
-      index:11
-    })
-  }
-  openModarayaPage(){
-    this.navCtrl.push(ChapterDetails,{
-      index:12
-    })
+  openHomePage(index){
+    this.navCtrl.push(HomePage,{index: index});
   }
 
 }

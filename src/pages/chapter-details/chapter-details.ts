@@ -4,8 +4,15 @@ import { Network } from '@ionic-native/network';
 import {Settings} from "../settings/settings";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
-import {Borda, Modaraya, Mohmadya} from '../../services/borda';
+import {Bordas} from '../../services/borda';
+import { Toast } from '@ionic-native/toast';
+import { AdMob } from '@ionic-native/admob';
 
+interface AdMobType {
+  banner: string,
+  interstitial: string,
+  reward_video: string
+}
 
 
 
@@ -19,7 +26,7 @@ import {Borda, Modaraya, Mohmadya} from '../../services/borda';
 @Component({
   selector: 'page-chapter-details',
   templateUrl: 'chapter-details.html',
-  providers:[SocialSharing, Clipboard]
+  providers:[SocialSharing, Clipboard, Toast]
 })
 export class ChapterDetails {
   chapter: any;
@@ -34,35 +41,22 @@ export class ChapterDetails {
     public navParams: NavParams,
     private network: Network,
     private _sharer: SocialSharing,
-    private _clipboard: Clipboard
-
-
-
+    private _clipboard: Clipboard,
+    private _toast: Toast,
+    private admob: AdMob
 ) {
-    var chapterNumber = +navParams.data.index
-    if (chapterNumber <= 10) {
-      this.chapter = Borda.chapters[navParams.data.index];
-      this.prefixer = 0;
-      console.log(typeof navParams.data.index);
-      console.log(JSON.stringify(chapterNumber));
-      for (var i = 0; i < chapterNumber ; i++) {
-        console.log(i);
-        console.log(Borda.chapters[i]);
-        this.prefixer += Borda.chapters[i].lines.length;
-      }
-    }
-    if (chapterNumber == 11){
-      this.chapter = Mohmadya.chapters[0];
-      this.prefixer = 0
-    }
-    if (chapterNumber == 12){
-      this.chapter = Modaraya.chapters[0];
-      this.prefixer = 0
+    var chapterNumber = +navParams.data.index;
+    this.chapter = Bordas[navParams.data.bordaIndex].chapters[navParams.data.index];
+    this.prefixer = 0;
+    console.log(typeof navParams.data.index);
+    console.log(JSON.stringify(chapterNumber));
+    for (var i = 0; i < chapterNumber ; i++) {
+      console.log(Bordas[navParams.data.bordaIndex].chapters[i]);
+      this.prefixer += Bordas[navParams.data.bordaIndex].chapters[i].lines.length;
     }
     this.intro = [
-      {right: 'مولاي صلي وسلم دائما ابدأ', left: 'علي حيبيك خير الخلق كلهم'},
-      {right: 'مولاي صلي وسلم دائما ابدأ', left: 'على النبي وأل البيت كلهم'}
-
+      {id: 1, right: 'مولاي صلي وسلم دائما ابدأ', left: 'علي حيبيك خير الخلق كلهم'},
+      {id: 2, right: 'مولاي صلي وسلم دائما ابدأ', left: 'على النبي وأل البيت كلهم'}
     ];
   };
   ionViewWillEnter() {
@@ -73,8 +67,38 @@ export class ChapterDetails {
     // this._nativeStorage.getItem('fontFace').then(data => {
     //   this.fontFaceClass = data ? data : this.fontFaceClass;
     // })
+    var admobid: AdMobType;
+    if (/(android)/i.test(navigator.userAgent)) {
+      admobid = { // for Android
+        banner: 'ca-app-pub-2772630944180636/3185523871',
+        interstitial: 'ca-app-pub-2772630944180636/6218561984',
+        reward_video: 'ca-app-pub-2772630944180636/9171351872'
+      };
+    } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+      admobid = { // for iOS
+        banner: 'ca-app-pub-234234234234324/234234234234',
+        interstitial: 'ca-app-pub-2772630944180636/6218561984',
+        reward_video: 'ca-app-pub-2772630944180636/9171351872'
+      };
+    } else {
+      admobid = { // for Windows Phone
+        banner: 'ca-app-pub-234234234234324/234234234234',
+        interstitial: 'ca-app-pub-2772630944180636/6218561984',
+        reward_video: 'ca-app-pub-2772630944180636/9171351872'
+      };
+    }
+    this.admob.prepareInterstitial({
+      adId: admobid.interstitial,
+      // isTesting: true,//comment this out before publishing the app
+      autoShow: false
+    });
   }
   ionViewDidLoad(){
+    this._toast.show(`إضغط علي البيت لمٌشاركته`, '5000', 'top').subscribe(
+      toast => {
+      //  without subscribe method toast is not working on android
+      }
+    );
     this.network_exist = this.network.type != 'none';
     this.network.onDisconnect().subscribe(() => {
       this.network_exist = false;
@@ -82,23 +106,39 @@ export class ChapterDetails {
     this.network.onConnect().subscribe(() => {
       setTimeout(() => {
         this.network_exist = true;
-      }, 2000);
+      }, 1500);
     });
   }
   openSettingsPage(){
     this.navCtrl.push(Settings);
   }
   shareFB(message){
-    // remember to add a link to the app here
+    message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
+    this._toast.show(`تم نسخ البيت . قم بلصقه للمشاركة علي الفيس بوك`, '5000', 'top').subscribe(
+      toast => {
+        //  without subscribe method toast is not working on android
+      }
+    );
     this._clipboard.copy(message);
-    this._sharer.share(message);
+    var that  = this ;
+    setTimeout(function(){
+      that._sharer.share(message,null, null, 'https://goo.gl/Q25Nq3');
+    },1500)
   }
   nextChapter(index){
+    this.admob.showInterstitial();
     this.navCtrl.pop();
     this.navCtrl.push(ChapterDetails,{
       index: index
     });
 
+  }
+  showVideo(){
+    console.log('ad clicked');
+
+    this.admob.prepareRewardVideoAd({
+      adId: 'ca-app-pub-2772630944180636/9171351872',
+    });
   }
 
 

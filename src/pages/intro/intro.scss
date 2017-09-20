@@ -6,6 +6,10 @@ page-intro {
     font-size: 6vw !important ;
     background-image: url("../assets/images/green3.jpg") !important;
     //background-image: url("../../assets/images/green4.jpg") !important;
+    p{
+      color: $light-green !important;
+      font-size: 6vw !important ;
+    }
   }
   ion-content{
     //background-image: url("../../assets/images/green3.jpg") !important;

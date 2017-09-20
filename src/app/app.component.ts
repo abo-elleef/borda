@@ -6,8 +6,9 @@ import { AdMob } from '@ionic-native/admob';
 import {Intro} from "../pages/intro/intro";
 interface AdMobType {
   banner: string,
-  interstitial: string
-};
+  interstitial: string,
+  reward_video: string
+}
 
 @Component({
   templateUrl: 'app.html'
@@ -26,17 +27,20 @@ export class MyApp {
       if (/(android)/i.test(navigator.userAgent)) {
         admobid = { // for Android
           banner: 'ca-app-pub-2772630944180636/3185523871',
-          interstitial: 'ca-app-pub-234234234234324/234234234234'
+          interstitial: 'ca-app-pub-2772630944180636/6218561984',
+          reward_video: 'ca-app-pub-2772630944180636/9171351872'
         };
       } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
         admobid = { // for iOS
           banner: 'ca-app-pub-234234234234324/234234234234',
-          interstitial: 'ca-app-pub-234234234234324/234234234234'
+          interstitial: 'ca-app-pub-2772630944180636/6218561984',
+          reward_video: 'ca-app-pub-2772630944180636/9171351872'
         };
       } else {
         admobid = { // for Windows Phone
           banner: 'ca-app-pub-234234234234324/234234234234',
-          interstitial: 'ca-app-pub-234234234234324/234234234234'
+          interstitial: 'ca-app-pub-2772630944180636/6218561984',
+          reward_video: 'ca-app-pub-2772630944180636/9171351872'
         };
       }
 

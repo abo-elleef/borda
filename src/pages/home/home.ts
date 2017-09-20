@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import {ChapterDetails} from '../chapter-details/chapter-details';
-import { Chapters, Borda} from '../../services/borda';
 import {Settings} from "../settings/settings";
+import {Bordas} from '../../services/borda';
 
 
 @Component({
@@ -10,18 +10,22 @@ import {Settings} from "../settings/settings";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  chapters: any = Chapters;
+  borda = {};
   prefixer: number = 0;
+  index: number =0;
   // fontSizeClassDesc: string = 'font-16';
   // fontSizeClassTitle: string = 'font-20';
-  fontSizeClass: string = 'font-16';
-  fontFaceClass: string = 'amiri';
+  // fontSizeClass: string = 'font-16';
+  // fontFaceClass: string = 'amiri';
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(JSON.stringify(navParams.data));
+    this.index = +navParams.data.index;
+    this.borda = Bordas[this.index];
+    console.log(this.index);
   }
 
   ionViewDidEnter() {
-    console.log(typeof Chapters)
   };
 
   ionViewWillEnter() {
@@ -39,7 +43,8 @@ export class HomePage {
 
   openChapter(index) {
     this.navCtrl.push(ChapterDetails, {
-      index: index
+      index: index,
+      bordaIndex: this.index,
     })
   }
   openSettingsPage(){

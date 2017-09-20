@@ -2,6 +2,13 @@ page-chapter-details {
   ion-card{
     background-color: $dark-green !important;
     color: $light-green;
+    font-size: 6vw !important ;
+    background-image: url("../assets/images/green3.jpg") !important;
+  }
+  .fab-button{
+    background-color: $dark-green !important;
+    color: $light-green;
+    font-size: 6vw !important ;
   }
   .chapter_body p{
     color: #222222;

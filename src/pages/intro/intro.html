@@ -19,16 +19,28 @@
 
 
 <ion-content padding  class="customGreen uthmani" >
-  <ion-card  padding text-center	(click)="openHomePage()">
-    البردة المباركة
+  <ion-card  padding text-center *ngFor="let borda of bordas; let index = index;"
+             (click)="openHomePage(index)">
+    <p>{{index+1}}</p>
+    <p> {{borda.author}} </p>
+    <p>{{borda.desc}}</p>
+    <p>{{borda.chapters.length}}</p>
   </ion-card>
 
-  <ion-card padding text-center	(click)="openMohmadyaPage()">
-    القصيدة المحمدية
-  </ion-card>
-  <ion-card padding text-center	(click)="openModarayaPage()">
-القصيدة المضرية
-  </ion-card>
+  <!--<ion-card  padding text-center	(click)="openHomePage()">-->
+    <!--البردة المباركة-->
+  <!--</ion-card>-->
+
+  <!--<ion-card padding text-center	(click)="openNahgBordaPage()">-->
+    <!--القصيدة المقبولة (نهج البردة)-->
+  <!--</ion-card>-->
+  <!--<ion-card padding text-center	(click)="openMohmadyaPage()">-->
+    <!--القصيدة المحمدية-->
+  <!--</ion-card>-->
+  <!--<ion-card padding text-center	(click)="openModarayaPage()">-->
+<!--القصيدة المضرية-->
+  <!--</ion-card>-->
+
 
 
 </ion-content>

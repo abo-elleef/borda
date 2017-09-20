@@ -19,10 +19,10 @@
 
 
 <ion-content padding class="customGreen  uthmani">
-  <div *ngFor="let line of intro" class="clearBG chapter_body ">
+  <div *ngFor="let line of intro" class="clearBG chapter_body " (click)="shareFB(line.right + ' ... ' + line.left)">
     <p class="clearBG chapter-title">{{line.right}}</p>
     <p class="clearBG chapter-title">{{line.left}}</p>
-    <p class="separator"> . . . </p>
+    <p class="separator" *ngIf="line.id == 1"> . . . </p>
   </div>
   <div *ngIf="network_exist">
     <span *ngIf="chapter.id == '1'">
@@ -75,14 +75,21 @@
     </span>
   </div>
   <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body"
-       (click)="shareFB(line.right + ' ' + line.left)">
-    <p>{{prefixer + index + 1}} - {{line.right}}</p>
+       (click)="shareFB(line.right + ' ... ' + line.left)">
+    <p class="separator"> .. {{prefixer + index + 1}} .. </p>
+    <p> {{line.right}}</p>
     <p>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
-    <p class="separator"> . . . </p>
   </div>
-  <ion-card padding text-center (click)="nextChapter(chapter.id)" *ngIf="+chapter.id < 10">
+  <ion-card padding text-center (click)="nextChapter(chapter.id)">
     الفصل التالي
   </ion-card>
-
+  <!--<ion-fab left bottom >-->
+    <!--<button ion-fab mini color="light-green"><ion-icon name="arrow-dropright"></ion-icon></button>-->
+    <!--<ion-fab-list side="right">-->
+      <!--<button ion-fab mini class="fab-button">-->
+        <!--<ion-icon name="videocam" (click)="showVideo()"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-fab-list>-->
+  <!--</ion-fab>-->
 
 </ion-content>
