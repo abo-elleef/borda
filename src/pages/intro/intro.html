@@ -18,13 +18,15 @@
 </ion-header>
 
 
-<ion-content padding  class="customGreen uthmani" >
-  <ion-card  padding text-center *ngFor="let borda of bordas; let index = index;"
+<ion-content class="customGreen uthmani" >
+  <ion-card   *ngFor="let borda of bordas; let index = index;"
              (click)="openHomePage(index)">
-    <p>{{index+1}}</p>
-    <p> {{borda.author}} </p>
-    <p>{{borda.desc}}</p>
-    <p>{{borda.chapters.length}}</p>
+    <ion-card-header padding text-center>
+      {{borda.author}}
+    </ion-card-header>
+    <ion-card-content>
+      {{borda.desc}}
+    </ion-card-content>
   </ion-card>
 
   <!--<ion-card  padding text-center	(click)="openHomePage()">-->

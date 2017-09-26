@@ -1,14 +1,17 @@
 page-intro {
   ion-card{
-    //background-color: transparent !important;
-    background-color: $dark-green !important;
+    // background-color: $dark-green !important;
     color: $light-green;
     font-size: 6vw !important ;
     background-image: url("../assets/images/green3.jpg") !important;
-    //background-image: url("../../assets/images/green4.jpg") !important;
-    p{
+    ion-card-header, ion-card-content{
       color: $light-green !important;
+    }
+    ion-card-header{
       font-size: 6vw !important ;
+    }
+    ion-card-content{
+      font-size: 4vw !important ;
     }
   }
   ion-content{

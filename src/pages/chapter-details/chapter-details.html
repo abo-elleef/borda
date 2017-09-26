@@ -25,53 +25,9 @@
     <p class="separator" *ngIf="line.id == 1"> . . . </p>
   </div>
   <div *ngIf="network_exist">
-    <span *ngIf="chapter.id == '1'">
+    <span *ngIf="chapter.track_id">
       <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335420223&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '2'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335420481&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '3'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335420985&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '4'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335420940&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '5'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335420939&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '6'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335426195&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '7'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335421367&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '8'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335421404&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '9'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335421632&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '10'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335421694&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '11'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335123150&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </span>
-    <span *ngIf="chapter.id == '12'">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335122085&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+              [src]="chapter.track_url"></iframe>
     </span>
   </div>
   <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body"
@@ -80,9 +36,19 @@
     <p> {{line.right}}</p>
     <p>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
   </div>
-  <ion-card padding text-center (click)="nextChapter(chapter.id)">
+  <!-- <ion-card padding text-center (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
     الفصل التالي
-  </ion-card>
+  </ion-card> -->
+  <div padding >
+    <button ion-button icon-left round float-left (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
+      التالي
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    </button>
+    <button ion-button icon-right round float-right (click)="openPreviousChapter(previousChapter.id)" *ngIf="previousChapter">
+      <ion-icon name="arrow-dropright-circle"></ion-icon>
+      السابق
+    </button>
+  </div>
   <!--<ion-fab left bottom >-->
     <!--<button ion-fab mini color="light-green"><ion-icon name="arrow-dropright"></ion-icon></button>-->
     <!--<ion-fab-list side="right">-->

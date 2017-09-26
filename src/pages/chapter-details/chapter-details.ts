@@ -7,6 +7,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 import {Bordas} from '../../services/borda';
 import { Toast } from '@ionic-native/toast';
 import { AdMob } from '@ionic-native/admob';
+import {SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 
 interface AdMobType {
   banner: string,
@@ -30,6 +31,8 @@ interface AdMobType {
 })
 export class ChapterDetails {
   chapter: any;
+  nextChapter: any;
+  previousChapter: any;
   intro: any;
   prefixer: number;
   // fontSizeClass: string = 'font-16';
@@ -43,10 +46,16 @@ export class ChapterDetails {
     private _sharer: SocialSharing,
     private _clipboard: Clipboard,
     private _toast: Toast,
-    private admob: AdMob
+    private admob: AdMob,
+    private dom: DomSanitizer,
 ) {
     var chapterNumber = +navParams.data.index;
-    this.chapter = Bordas[navParams.data.bordaIndex].chapters[navParams.data.index];
+    this.previousChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber- 1];
+    console.log(chapterNumber -1);
+    this.chapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber];
+    this.nextChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber + 1];
+    console.log(chapterNumber +1);
+    this.chapter.track_url = this.dom.bypassSecurityTrustResourceUrl("https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + this.chapter.track_id + "&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true")
     this.prefixer = 0;
     console.log(typeof navParams.data.index);
     console.log(JSON.stringify(chapterNumber));
@@ -125,11 +134,23 @@ export class ChapterDetails {
       that._sharer.share(message,null, null, 'https://goo.gl/Q25Nq3');
     },1500)
   }
-  nextChapter(index){
+  openNextChapter(index){
     this.admob.showInterstitial();
     this.navCtrl.pop();
     this.navCtrl.push(ChapterDetails,{
-      index: index
+      index: index,
+      bordaIndex: this.navParams.data.bordaIndex
+
+    });
+
+  }
+  openPreviousChapter(index){
+    this.admob.showInterstitial();
+    this.navCtrl.pop();
+    this.navCtrl.push(ChapterDetails,{
+      index: index-1,
+      bordaIndex: this.navParams.data.bordaIndex
+
     });
 
   }
