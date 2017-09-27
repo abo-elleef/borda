@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="uthmani customGreen">
+<ion-content class="uthmani customGreen">
   <ion-card padding text-center *ngFor="let chapter of borda.chapters; let index = index;" (click)="openChapter(index)">
       {{chapter.id}} - {{chapter.desc}}
   </ion-card>

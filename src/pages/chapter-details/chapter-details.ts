@@ -103,7 +103,7 @@ export class ChapterDetails {
     });
   }
   ionViewDidLoad(){
-    this._toast.show(`إضغط علي البيت لمٌشاركته`, '5000', 'top').subscribe(
+    this._toast.show(`إضغط علي البيت لمٌشاركته`, '5000', 'bottom').subscribe(
       toast => {
       //  without subscribe method toast is not working on android
       }
@@ -123,7 +123,7 @@ export class ChapterDetails {
   }
   shareFB(message){
     message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
-    this._toast.show(`تم نسخ البيت . قم بلصقه للمشاركة علي الفيس بوك`, '5000', 'top').subscribe(
+    this._toast.show(`تم نسخ البيت . قم بلصقه للمشاركة علي الفيس بوك`, '5000', 'bottom').subscribe(
       toast => {
         //  without subscribe method toast is not working on android
       }
