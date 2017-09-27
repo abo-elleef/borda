@@ -14,7 +14,17 @@ page-intro {
       font-size: 4vw !important ;
     }
   }
-  ion-content{
-    //background-image: url("../../assets/images/green3.jpg") !important;
+}
+@media screen and (orientation:landscape) {
+  page-intro {
+    ion-card{
+      font-size: 4vw !important ;
+      ion-card-header{
+        font-size: 4vw !important ;
+      }
+      ion-card-content{
+        font-size: 3vw !important ;
+      }
+    }
   }
 }

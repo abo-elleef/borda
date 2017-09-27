@@ -16,7 +16,13 @@ page-home {
     padding-right: 10px;
     color: $light-green;
   }
-
+}
+@media screen and (orientation:landscape) {
+  page-home {
+    ion-card{
+      font-size: 4vw !important ;
+    }
+  }
 }
 
 

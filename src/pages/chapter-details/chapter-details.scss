@@ -28,4 +28,11 @@ page-chapter-details {
     color: $dark-green !important;
   }
 }
+@media screen and (orientation:landscape) {
+  page-chapter-details {
+    .chapter_body p{
+      font-size: 4vw ;
+    }
+  }
+}
 

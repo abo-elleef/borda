@@ -21,10 +21,9 @@
 
 
 <ion-content padding class="customGreen  uthmani">
-  <div *ngFor="let line of intro" class="clearBG chapter_body " (click)="shareFB(line.right + ' ... ' + line.left)">
-    <p class="clearBG chapter-title">{{line.right}}</p>
-    <p class="clearBG chapter-title">{{line.left}}</p>
-    <p class="separator" *ngIf="line.id == 1"> . . . </p>
+  <div *ngFor="let line of intro" class="clearBG chapter_body clear" (click)="shareFB(line.right + ' ... ' + line.left)">
+    <p class="clearBG chapter-title" float-right>{{line.right}}</p>
+    <p class="clearBG chapter-title" float-left>{{line.left}}</p>
   </div>
   <div *ngIf="network_exist">
     <span *ngIf="chapter.track_id">
@@ -32,16 +31,16 @@
               [src]="chapter.track_url"></iframe>
     </span>
   </div>
-  <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body"
+  <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body clear"
        (click)="shareFB(line.right + ' ... ' + line.left)">
     <p class="separator"> .. {{prefixer + index + 1}} .. </p>
-    <p> {{line.right}}</p>
-    <p>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
+    <p class='shater' float-right> {{line.right}}</p>
+    <p class="shater" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
   </div>
   <!-- <ion-card padding text-center (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
     الفصل التالي
   </ion-card> -->
-  <div padding >
+  <div padding class="clear" >
     <button ion-button icon-left round float-left (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
       التالي
       <ion-icon name="arrow-dropleft-circle"></ion-icon>

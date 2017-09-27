@@ -64,8 +64,8 @@ export class ChapterDetails {
       this.prefixer += Bordas[navParams.data.bordaIndex].chapters[i].lines.length;
     }
     this.intro = [
-      {id: 1, right: 'مولاي صلي وسلم دائما ابدأ', left: 'علي حيبيك خير الخلق كلهم'},
-      {id: 2, right: 'مولاي صلي وسلم دائما ابدأ', left: 'على النبي وأل البيت كلهم'}
+      {id: 1, right: 'مولاي صلي وسلم دائما أبدا', left: 'علي حيبيك خير الخلق كلهم'},
+      {id: 2, right: 'مولاي صلي وسلم دائما أبدا', left: 'على النبي وأل البيت كلهم'}
     ];
   };
   ionViewWillEnter() {
