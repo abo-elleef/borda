@@ -4,24 +4,27 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header class="uthmani">
+<ion-header class="{{fontFaceClass}} ">
 
   <ion-navbar>
     <ion-title>
-      {{chapter.id}} - {{chapter.desc}}
+      <span *ngIf='!chapter.extra'>{{chapter.id}} - </span> {{chapter.desc}}
     </ion-title>
-    <!--<ion-buttons end>-->
-      <!--<button class="clearBG" large (click)="openSettingsPage()">-->
-        <!--<ion-icon name="settings"></ion-icon>-->
-      <!--</button>-->
-    <!--</ion-buttons>-->
+    <ion-buttons end >
+      <button class="clearBG" large (click)="openSettingsPage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+      <button class="clearBG" large (click)="openAboutModal()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding class="customGreen  uthmani">
-  <div *ngFor="let line of intro" class="clearBG chapter_body clear" (click)="shareFB(line.right + ' ... ' + line.left)">
+<ion-content padding class="customGreen">
+  <div *ngFor="let line of intro" class="clearBG chapter_body clear {{fontFaceClass}} {{fontSize}}" (click)="shareFB(line.right + ' ... ' + line.left)">
     <p class="clearBG chapter-title" float-right>{{line.right}}</p>
     <p class="clearBG chapter-title" float-left>{{line.left}}</p>
   </div>
@@ -31,7 +34,7 @@
               [src]="chapter.track_url"></iframe>
     </span>
   </div>
-  <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body clear"
+  <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body clear {{fontFaceClass}} {{fontSize}}"
        (click)="shareFB(line.right + ' ... ' + line.left)">
     <p class="separator"> .. {{prefixer + index + 1}} .. </p>
     <p class='shater' float-right> {{line.right}}</p>
@@ -40,12 +43,12 @@
   <!-- <ion-card padding text-center (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
     الفصل التالي
   </ion-card> -->
-  <div padding class="clear" >
+  <div padding class="clear {{fontFaceClass}}" >
     <button ion-button icon-left round float-left (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
       التالي
       <ion-icon name="arrow-dropleft-circle"></ion-icon>
     </button>
-    <button ion-button icon-right round float-right (click)="openPreviousChapter(previousChapter.id)" *ngIf="previousChapter">
+    <button ion-button icon-right round float-right  (click)="openPreviousChapter(previousChapter.id)" *ngIf="previousChapter">
       <ion-icon name="arrow-dropright-circle"></ion-icon>
       السابق
     </button>

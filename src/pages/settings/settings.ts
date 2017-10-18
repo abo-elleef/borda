@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
+import {Styling} from '../../services/Globals'
 
 
 /**
@@ -12,44 +13,58 @@ import { NativeStorage } from '@ionic-native/native-storage';
 @IonicPage()
 @Component({
   selector: 'page-settings',
-  templateUrl: 'settings.html',
-  providers:[NativeStorage]
+  templateUrl: 'settings.html'
 })
 export class Settings {
-  fontSizeClass: string = 'font-16';
-  fontSize: number = 16;
-  fontFaceClass: string = 'amiri';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _nativeStorage: NativeStorage) {
-
+  fontSize: string = Styling.fontSize;
+  fontFaceClass: string = Styling.fontFace;
+  fontSizeString: string = '';
+  fontFaceClassString: string = '';
+  fontFaceContentClass: string = 'hide';
+  fontSizeContentClass: string = 'hide';
+  translator: Object = {
+    fontFace: {
+      amiri: 'الأميري',
+      kufi: 'الكوفي',
+      uthmani: 'العثناني',
+    },
+    fontSize: {
+      largeFont: 'كبير',
+      normalFont: 'متوسط',
+      smallFont: 'صغير'
+    }
+  };
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private _nativeStorage: NativeStorage
+  ) {
   }
-
   ionViewWillEnter() {
     this._nativeStorage.getItem('fontSize').then(data =>{
-      this.fontSizeClass = data ?  'font-'+data : this.fontSizeClass;
-      this.fontSize = data;
-
-
+      this.fontSize = data ?  data : this.fontSize;
+      this.fontSizeString = this.translator['fontSize'][this.fontSize]
     });
     this._nativeStorage.getItem('fontFace').then(data => {
-      this.fontFaceClass = data ? data: this.fontFaceClass
-      console.log(this.fontFaceClass);
+      this.fontFaceClass = data ? data: this.fontFaceClass;
+      this.fontFaceClassString = this.translator['fontFace'][this.fontFaceClass]
     });
   }
   changeFont(fontFace){
+    this._nativeStorage.setItem('fontFace', fontFace);
     this.fontFaceClass = fontFace;
-    this._nativeStorage.setItem('fontFace', fontFace).then(data => {
-      this._nativeStorage.getItem('fontFace').then(data => console.log(data))
-      }
-    )
+    this.fontFaceClassString = this.translator['fontFace'][this.fontFaceClass]
   }
-  sliderChanged(fontSize){
+  changeFontSize(fontSize){
+    this._nativeStorage.setItem('fontSize', fontSize);
     this.fontSize = fontSize;
-    this.fontSizeClass = 'font-'+fontSize;
-    this._nativeStorage.setItem('fontSize', fontSize).then(data => {
-        this._nativeStorage.getItem('fontSize').then(data => console.log(data))
-      }
-    );
-    console.log('slider changed to  '+ fontSize);
+    this.fontSizeString = this.translator['fontSize'][this.fontSize]
+  }
+  toggleFontSizeContent(){
+    this.fontSizeContentClass = this.fontSizeContentClass == 'hide' ? 'fadeIn' : 'hide'
+  }
+  toggleFontFaceContent(){
+    this.fontFaceContentClass = this.fontFaceContentClass == 'hide' ? 'fadeIn' : 'hide'
   }
 
 }

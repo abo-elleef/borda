@@ -21,30 +21,30 @@
 //  font-weight: normal;
 //  font-style: normal;
 //}
-//@font-face {
-//  font-family: 'kufi';
-//  src: url('../assets/fonts/DroidKufi-Regular.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
-//@font-face {
-//  font-family: 'nas5';
-//  src: url('../assets/fonts/mry-kacstqurn.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
-//@font-face {
-//  font-family: 'cairo';
-//  src: url('../assets/fonts/Cairo-Regular.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
-//@font-face {
-//  font-family: 'amiri';
-//  src: url('../assets/fonts/amiri-quran.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
+@font-face {
+ font-family: 'cairo';
+ src: url('../assets/fonts/Cairo-Regular.ttf') format('ttf');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'kufi';
+ src: url('../assets/fonts/DroidKufi-Regular.otf') ;
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'amiri';
+ src: url('../assets/fonts/amiri-quran.otf') ;
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+  font-family: 'sg';
+  src: url('../assets/fonts/segoeuil.woff') ;
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: 'uthmani';
   src: url('../assets/fonts/UthmanicHafs1.otf');
@@ -53,10 +53,17 @@
 }
 *{
   direction: rtl;
-  font-family: 'kufi-bold';
 }
+.alert-radio-group {
+  .button-inner {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+}
+
 .customDarkGreen{
-  background: rgb(100, 255, 100) !important;
+  background: $dark-green;
+  color: $light-green;
 }
 .customGreen{
   background: rgb(191, 255, 191);
@@ -67,20 +74,56 @@
 .clear {
    clear: both;
 }
-//.kufi, .kufi *{ font-family: 'kufi';}
-//.amiri, .amiri *{ font-family: 'amiri';}
-//.cairo, .cairo *{ font-family: 'cairo';}
+.bold{
+  font-weight: bold;
+}
+.kufi, .kufi *{ font-family: 'kufi' ;}
+.amiri, .amiri *{ font-family: 'amiri' ;}
+.cairo, .cairo *{ font-family: 'cairo';}
 .uthmani, .uthmani *{ font-family: 'uthmani';}
+.sg, .sg *{ font-family: 'sg';}
 
-//.font-12,.font-12 *{ font-size: 12px !important;}
-//.font-14,.font-14 *{ font-size: 14px !important;}
-//.font-16,.font-16 *{ font-size: 16px !important;}
-//.font-18,.font-18 *{ font-size: 18px !important;}
-//.font-20,.font-20 *{ font-size: 20px !important;}
-//.font-22,.font-22 *{ font-size: 22px !important;}
-//.font-24,.font-24 *{ font-size: 24px !important;}
-//.font-26,.font-26 *{ font-size: 26px !important;}
+
+
+.font-12,.font-12 *{ font-size: 12px !important;}
+.font-14,.font-14 *{ font-size: 14px !important;}
+.font-16,.font-16 *{ font-size: 16px !important;}
+.font-18,.font-18 *{ font-size: 18px !important;}
+.font-20,.font-20 *{ font-size: 20px !important;}
+.font-22,.font-22 *{ font-size: 22px !important;}
+.font-24,.font-24 *{ font-size: 24px !important;}
+.font-26,.font-26 *{ font-size: 26px !important;}
+// relative font sizses
+//.largeFont, .largeFont * { font-size: 6vw !important; line-height: 12vw;}
+//.normalFont, .normalFont * { font-size: 4.5vw !important; line-height: 9vw;}
+//.smallFont, .smallFont * { font-size: 3vw !important; line-height: 9vw;}
+//fixed font sizes
+.largeFont, .largeFont * { font-size: 24px !important; line-height: 2;}
+.normalFont, .normalFont * { font-size: 20px !important; line-height: 2;}
+.smallFont, .smallFont * { font-size: 16px !important;line-height: 2;}
+@media screen and (orientation:landscape) {
+  // relative font sizes
+  //.largeFont, .largeFont * { font-size: 5vw !important; line-height: 9vw;}
+  //.normalFont, .normalFont * { font-size: 4vw !important; line-height: 5vw;}
+  //.smallFont, .smallFont * { font-size: 3vw !important; line-height: 4vw;}
+  .largeFont, .largeFont * { font-size: 24px !important; line-height: 1.25;}
+  .normalFont, .normalFont * { font-size: 20px !important; line-height: 1.25;}
+  .smallFont, .smallFont * { font-size: 16px !important;line-height: 1.25;}
+}
 ion-icon{
   font-family: "Ionicons" !important;
   color: $light-green;
+}
+ion-modal {
+    background-color: rgba(0, 0, 0, 0.75);
+    ion-content.content{
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 70%;
+        border-radius: 20px;
+        .scroll-content {
+            border-radius: 20px;
+        }
+    }
 }

@@ -4,5 +4,12 @@ page-settings {
   ion-card{
     background: rgb(220,255,220) !important;
   }
+  .example{
+    background-color: #c5c5c5 !important;
+  }
+  .fadeIn{
+    -webkit-animation: fadeInLeft 1s;
+    animation: fadeInLeft 1s;
+  }
 
 }

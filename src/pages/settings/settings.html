@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header class="uthmani">
+<ion-header class="{{fontFaceClass}}">
 
   <ion-navbar>
     <ion-title>الإعدادات</ion-title>
@@ -13,48 +13,86 @@
 </ion-header>
 
 
-<ion-content padding class="customGreen uthmani">
+<ion-content class="customGreen">
+  <!--<ion-list>-->
+    <!--<ion-item class="customDarkGreen">-->
+      <!--<ion-label class="kufi">-->
+        <!--شكل الخط-->
+      <!--</ion-label>-->
+      <!--<ion-select [(ngModel)]="fontFaceClass" cancelText='إلغاء' okText='تثبيت' (ionChange)="changeFont(fontFaceClass)">-->
+        <!--<ion-option value="amiri" class='amiri'>الأميري</ion-option>-->
+        <!--<ion-option value="kufi" class='kufi'>الكوفي</ion-option>-->
+         <!--&lt;!&ndash;<ion-option value="cairo"> القاهري</ion-option>&ndash;&gt;-->
+        <!--<ion-option value="uthmani" class='uthmani'>العثماني</ion-option>-->
+        <!--&lt;!&ndash;<ion-option value="sg" class='sg'>scriptx</ion-option>&ndash;&gt;-->
+
+      <!--</ion-select>-->
+    <!--</ion-item>-->
+    <!--<ion-item class="customDarkGreen">-->
+      <!--<ion-label class="kufi">-->
+        <!--حجم الخط-->
+      <!--</ion-label>-->
+      <!--<ion-select [(ngModel)]="fontSize" cancelText='إلغاء' okText='تثبيت' (ionChange)="changeFontSize(fontSize)">-->
+        <!--<ion-option value="largeFont">كبير</ion-option>-->
+        <!--<ion-option value="normalFont">طبيعي</ion-option>-->
+        <!--<ion-option value="smallFont">صغير</ion-option>-->
+      <!--</ion-select>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+  <ion-card padding>
+    <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
+      <p class="clear" float-right>يا ربِّ بالمصطفى بلِّغْ مقاصدنا</p>
+      <p class="clear" float-left>واغفرْ لنا ما مضى يا واسع الكرم</p>
+    </ion-card-content>
+  </ion-card>
 
   <ion-card class="customGreen">
+    <ion-card-header (click)="toggleFontSizeContent()">
+      <ion-label class="bold" float-right>حجم الخط</ion-label>
+      <ion-label float-left>{{fontSizeString}}</ion-label>
 
-    <ion-card-header>
-      حجم الخط {{fontSize}}
     </ion-card-header>
 
-    <ion-card-content>
-      <ion-range [(ngModel)]="fontSize" min="14" max="24" step="2" snaps="true"
-                 (ngModelChange)="sliderChanged(fontSize)">
-        <ion-label padding range-left>24</ion-label>
-        <ion-label padding range-right>14</ion-label>
-        <!--<ion-icon range-left name="md-add-circle"></ion-icon>-->
-        <!--<ion-icon range-right small name="md-remove-circle"></ion-icon>-->
-      </ion-range>
+    <ion-card-content class="{{fontSizeContentClass}}">
+      <ion-list radio-group [(ngModel)]="fontSize">
+        <ion-item class="clearBG">
+          <ion-label >كبير</ion-label>
+          <ion-radio value="largeFont" (click)="changeFontSize('largeFont')"></ion-radio>
+        </ion-item>
+        <ion-item class="clearBG">
+          <ion-label >متوسط</ion-label>
+          <ion-radio value="normalFont" (click)="changeFontSize('normalFont')"></ion-radio>
+        </ion-item>
+        <ion-item class="clearBG">
+          <ion-label >صغير</ion-label>
+          <ion-radio value="smallFont" (click)="changeFontSize('smallFont')"></ion-radio>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
 
   </ion-card>
+
   <ion-card>
 
-    <ion-card-header>
-      نوع الخط
+    <ion-card-header (click)="toggleFontFaceContent()">
+
+      <ion-label class="bold" float-right>نوع الخط</ion-label>
+      <ion-label float-left>{{fontFaceClassString}}</ion-label>
     </ion-card-header>
 
-    <ion-card-content>
-      <ion-list radio-group >
+    <ion-card-content class="{{fontFaceContentClass}}">
+      <ion-list radio-group [(ngModel)]="fontFaceClass">
         <ion-item class="clearBG">
-          <ion-label style="font-family: amiri">الخط الأميري</ion-label>
-          <ion-radio [checked]="fontFaceClass == 'amiri'" value="amiri" (click)="changeFont('amiri')"></ion-radio>
+          <ion-label style="font-family: amiri">الأميري</ion-label>
+          <ion-radio value="amiri" (click)="changeFont('amiri')"></ion-radio>
         </ion-item>
         <ion-item class="clearBG">
-          <ion-label style="font-family: kufi">الخط الكوفي</ion-label>
-          <ion-radio [checked]="fontFaceClass == 'kufi'" value="kufi" (click)="changeFont('kufi')"></ion-radio>
+          <ion-label style="font-family: kufi">الكوفي</ion-label>
+          <ion-radio value="kufi" (click)="changeFont('kufi')"></ion-radio>
         </ion-item>
         <ion-item class="clearBG">
-          <ion-label style="font-family: cairo">الخط القاهري</ion-label>
-          <ion-radio [checked]="fontFaceClass == 'cairo'" value="cairo" (click)="changeFont('cairo')"></ion-radio>
-        </ion-item>
-        <ion-item class="clearBG">
-          <ion-label style="font-family: uthmani">الخط العثماني</ion-label>
-          <ion-radio [checked]="fontFaceClass == 'uthmani'" value="uthmani" (click)="changeFont('uthmani')"></ion-radio>
+          <ion-label style="font-family: uthmani">العثماني</ion-label>
+          <ion-radio value="uthmani" (click)="changeFont('uthmani')"></ion-radio>
         </ion-item>
       </ion-list>
     </ion-card-content>

@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 import {Settings} from "../settings/settings";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 import {Bordas} from '../../services/borda';
+import {Styling} from '../../services/Globals';
 import { Toast } from '@ionic-native/toast';
 import { AdMob } from '@ionic-native/admob';
-import {SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
+import { NativeStorage } from '@ionic-native/native-storage';
+import {AboutModalPage} from '../about-modal-page/about-modal-page'
+
 
 interface AdMobType {
   banner: string,
@@ -35,33 +39,31 @@ export class ChapterDetails {
   previousChapter: any;
   intro: any;
   prefixer: number;
-  // fontSizeClass: string = 'font-16';
-  // fontSizeClassTitle = 'font-18';
-  // fontFaceClass: string = 'amiri';
+  fontSize: string = Styling.fontSize;
+  fontFaceClass: string = Styling.fontFace;;
   network_exist: Boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public modalCtrl: ModalController,
     private network: Network,
     private _sharer: SocialSharing,
     private _clipboard: Clipboard,
     private _toast: Toast,
     private admob: AdMob,
     private dom: DomSanitizer,
+    private _nativeStorage: NativeStorage
 ) {
     var chapterNumber = +navParams.data.index;
     this.previousChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber- 1];
-    console.log(chapterNumber -1);
     this.chapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber];
     this.nextChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber + 1];
-    console.log(chapterNumber +1);
     this.chapter.track_url = this.dom.bypassSecurityTrustResourceUrl("https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + this.chapter.track_id + "&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true")
     this.prefixer = 0;
-    console.log(typeof navParams.data.index);
-    console.log(JSON.stringify(chapterNumber));
-    for (var i = 0; i < chapterNumber ; i++) {
-      console.log(Bordas[navParams.data.bordaIndex].chapters[i]);
-      this.prefixer += Bordas[navParams.data.bordaIndex].chapters[i].lines.length;
+    if (!this.chapter.extra){
+      for (var i = 0; i < chapterNumber ; i++) {
+        this.prefixer += Bordas[navParams.data.bordaIndex].chapters[i].lines.length;
+      }
     }
     this.intro = [
       {id: 1, right: 'مولاي صلي وسلم دائما أبدا', left: 'علي حيبيك خير الخلق كلهم'},
@@ -69,13 +71,12 @@ export class ChapterDetails {
     ];
   };
   ionViewWillEnter() {
-    // this._nativeStorage.getItem('fontSize').then(data => {
-    //   this.fontSizeClass = data ? 'font-' + data : this.fontSizeClass;
-    //   this.fontSizeClassTitle = data ? 'font-' +(data + 2) : 'font-20';
-    // });
-    // this._nativeStorage.getItem('fontFace').then(data => {
-    //   this.fontFaceClass = data ? data : this.fontFaceClass;
-    // })
+    this._nativeStorage.getItem('fontSize').then(data =>{
+      this.fontSize = data ?  data : this.fontSize;
+    });
+    this._nativeStorage.getItem('fontFace').then(data => {
+      this.fontFaceClass = data ? data: this.fontFaceClass
+    });
     var admobid: AdMobType;
     if (/(android)/i.test(navigator.userAgent)) {
       admobid = { // for Android
@@ -118,9 +119,6 @@ export class ChapterDetails {
       }, 1500);
     });
   }
-  openSettingsPage(){
-    this.navCtrl.push(Settings);
-  }
   shareFB(message){
     message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
     this._toast.show(`تم نسخ البيت . قم بلصقه للمشاركة علي الفيس بوك`, '5000', 'bottom').subscribe(
@@ -152,6 +150,14 @@ export class ChapterDetails {
       bordaIndex: this.navParams.data.bordaIndex
 
     });
+
+  }
+  openSettingsPage(){
+    this.navCtrl.push(Settings);
+  }
+  openAboutModal(){
+    var modalPage = this.modalCtrl.create(AboutModalPage);
+    modalPage.present();
 
   }
   showVideo(){

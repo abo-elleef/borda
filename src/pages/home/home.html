@@ -1,16 +1,19 @@
-<ion-header class="uthmani">
+<ion-header class="{{fontFaceClass}}">
   <ion-navbar >
     <ion-title> الفصول </ion-title>
-    <!--<ion-buttons end >-->
-      <!--<button class="clearBG" large (click)="openSettingsPage()">-->
-        <!--<ion-icon name="settings"></ion-icon>-->
-      <!--</button>-->
-    <!--</ion-buttons>-->
+    <ion-buttons end >
+      <button class="clearBG" large (click)="openSettingsPage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+      <button class="clearBG" large (click)="openAboutModal()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="uthmani customGreen">
+<ion-content class="customGreen {{fontFaceClass}} {{fontSize}}">
   <ion-card padding text-center *ngFor="let chapter of borda.chapters; let index = index;" (click)="openChapter(index)">
-      {{chapter.id}} - {{chapter.desc}}
+      <span *ngIf='!chapter.extra'>{{chapter.id}} - </span> {{chapter.desc}}
   </ion-card>
 </ion-content>
