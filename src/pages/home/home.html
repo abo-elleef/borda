@@ -6,14 +6,15 @@
         <ion-icon name="settings"></ion-icon>
       </button>
       <button class="clearBG" large (click)="openAboutModal()">
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="information-circle"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="customGreen {{fontFaceClass}} {{fontSize}}">
-  <ion-card padding text-center *ngFor="let chapter of borda.chapters; let index = index;" (click)="openChapter(index)">
-      <span *ngIf='!chapter.extra'>{{chapter.id}} - </span> {{chapter.desc}}
+  <ion-card padding *ngFor="let chapter of borda.chapters; let index = index;" (click)="openChapter(index)">
+      <ion-icon name="ios-book"></ion-icon>
+      <span *ngIf='!chapter.extra && false'>{{chapter.id}} - </span> {{chapter.desc}}
   </ion-card>
 </ion-content>

@@ -54,6 +54,9 @@
 *{
   direction: rtl;
 }
+button{
+  font-size:16px !important;
+}
 .alert-radio-group {
   .button-inner {
     flex-direction: row-reverse;
@@ -66,7 +69,8 @@
   color: $light-green;
 }
 .customGreen{
-  background: rgb(191, 255, 191);
+  background: #f0fff0;
+    //rgb(191, 255, 191);
 }
 .clearBG{
   background: rgba(255, 255, 255, 0);

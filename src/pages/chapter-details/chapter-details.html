@@ -15,7 +15,7 @@
         <ion-icon name="settings"></ion-icon>
       </button>
       <button class="clearBG" large (click)="openAboutModal()">
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="information-circle"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -23,23 +23,39 @@
 </ion-header>
 
 
-<ion-content padding class="customGreen">
-  <div *ngFor="let line of intro" class="clearBG chapter_body clear {{fontFaceClass}} {{fontSize}}" (click)="shareFB(line.right + ' ... ' + line.left)">
-    <p class="clearBG chapter-title" float-right>{{line.right}}</p>
-    <p class="clearBG chapter-title" float-left>{{line.left}}</p>
-  </div>
+<ion-content class="customGreen">
+  <!--<div *ngFor="let line of intro" class="clearBG chapter_body clear {{fontFaceClass}} {{fontSize}}" (click)="shareFB(line.right + ' ... ' + line.left)">-->
+    <!--<p class="clearBG chapter-title" float-right>{{line.right}}</p>-->
+    <!--<p class="clearBG chapter-title" float-left>{{line.left}}</p>-->
+  <!--</div>-->
+  <!--<ion-card padding *ngFor="let line of intro; let index = index;"-->
+            <!--(click)="shareFB(line.right + ' ... ' + line.left)">-->
+    <!--<ion-card-content class="{{fontFaceClass}} {{fontSize}}">-->
+      <!--&lt;!&ndash;<p class="separator"> .. {{prefixer + index + 1}} .. </p>&ndash;&gt;-->
+      <!--<p class="clear" float-right>{{line.right}}</p>-->
+      <!--<p class="clear" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>-->
+    <!--</ion-card-content>-->
+  <!--</ion-card>-->
   <div *ngIf="network_exist">
     <span *ngIf="chapter.track_id">
       <iframe width="100%" height="150" scrolling="no" frameborder="no"
               [src]="chapter.track_url"></iframe>
     </span>
   </div>
-  <div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body clear {{fontFaceClass}} {{fontSize}}"
-       (click)="shareFB(line.right + ' ... ' + line.left)">
-    <p class="separator"> .. {{prefixer + index + 1}} .. </p>
-    <p class='shater' float-right> {{line.right}}</p>
-    <p class="shater" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
-  </div>
+  <ion-card padding *ngFor="let line of chapter.lines; let index = index;"
+            (click)="shareFB(line.right + ' ... ' + line.left)">
+    <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
+      <!--<p class="separator"> .. {{prefixer + index + 1}} .. </p>-->
+      <p class="clear" float-right>{{line.right}}</p>
+      <p class="clear" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
+    </ion-card-content>
+  </ion-card>
+  <!--<div *ngFor="let line of chapter.lines; let index = index;" class="clearBG chapter_body clear {{fontFaceClass}} {{fontSize}}"-->
+       <!--(click)="shareFB(line.right + ' ... ' + line.left)">-->
+    <!--<p class="separator"> .. {{prefixer + index + 1}} .. </p>-->
+    <!--<p class='shater' float-right> {{line.right}}</p>-->
+    <!--<p class="shater" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>-->
+  <!--</div>-->
   <!-- <ion-card padding text-center (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
     الفصل التالي
   </ion-card> -->

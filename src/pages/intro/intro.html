@@ -13,7 +13,7 @@
         <ion-icon name="settings"></ion-icon>
       </button>
       <button class="clearBG" large (click)="openAboutModal()">
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="information-circle"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -26,7 +26,8 @@
              (click)="openHomePage(index)"
              class='ripple'
              >
-    <ion-card-header padding text-center>
+    <ion-card-header padding>
+      <ion-icon name="ios-book"></ion-icon>
       {{borda.author}}
     </ion-card-header>
     <ion-card-content>

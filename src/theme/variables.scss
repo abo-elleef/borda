@@ -30,9 +30,11 @@ $font-path: "../assets/fonts";
 //  light:      #f4f4f4,
 //  dark:       #222
 //);
-
-$dark-green:rgb(0, 100, 0);
+//(0, 100, 0)
+//$dark-green: #376A2F;
+$dark-green: rgb(20,90,20);
 $light-green:rgb(191, 255, 191);
+$lighter-background: rgb(220,255,220);
 $colors: (
   primary:    ($dark-green),
   secondary:  #32db64,

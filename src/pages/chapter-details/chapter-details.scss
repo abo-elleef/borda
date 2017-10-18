@@ -1,12 +1,11 @@
 page-chapter-details {
-  button{
-    font-size:16px !important;
-  }
   ion-card{
-    background-color: $dark-green !important;
-    color: $light-green;
-    font-size: 6vw !important ;
-    background-image: url("../assets/images/green3.jpg") !important;
+  //  background-color: $dark-green !important;
+  //  color: $light-green;
+  //  font-size: 6vw !important ;
+  //  background-image: url("../assets/images/green3.jpg") !important;
+    background: rgb(220,255,220) !important;
+    padding-top: 8px !important;
   }
   .fab-button{
     background-color: $dark-green !important;
