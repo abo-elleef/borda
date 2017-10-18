@@ -26,7 +26,7 @@ export class Settings {
     fontFace: {
       amiri: 'الأميري',
       kufi: 'الكوفي',
-      uthmani: 'العثناني',
+      uthmani: 'العثماني',
     },
     fontSize: {
       largeFont: 'كبير',

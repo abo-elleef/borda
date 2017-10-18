@@ -56,15 +56,15 @@
     <ion-card-content class="{{fontSizeContentClass}}">
       <ion-list radio-group [(ngModel)]="fontSize">
         <ion-item class="clearBG">
-          <ion-label >كبير</ion-label>
+          <ion-label class="largeFont" >كبير</ion-label>
           <ion-radio value="largeFont" (click)="changeFontSize('largeFont')"></ion-radio>
         </ion-item>
         <ion-item class="clearBG">
-          <ion-label >متوسط</ion-label>
+          <ion-label class="normalFont" >متوسط</ion-label>
           <ion-radio value="normalFont" (click)="changeFontSize('normalFont')"></ion-radio>
         </ion-item>
         <ion-item class="clearBG">
-          <ion-label >صغير</ion-label>
+          <ion-label class="smallFont" >صغير</ion-label>
           <ion-radio value="smallFont" (click)="changeFontSize('smallFont')"></ion-radio>
         </ion-item>
       </ion-list>
