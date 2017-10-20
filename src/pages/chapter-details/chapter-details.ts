@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 import {Settings} from "../settings/settings";
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -40,7 +40,7 @@ export class ChapterDetails {
   intro: any;
   prefixer: number;
   fontSize: string = Styling.fontSize;
-  fontFaceClass: string = Styling.fontFace;;
+  fontFaceClass: string = Styling.fontFace;
   network_exist: Boolean;
   constructor(
     public navCtrl: NavController,
@@ -54,15 +54,32 @@ export class ChapterDetails {
     private dom: DomSanitizer,
     private _nativeStorage: NativeStorage
 ) {
-    var chapterNumber = +navParams.data.index;
-    this.previousChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber- 1];
-    this.chapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber];
-    this.nextChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber + 1];
-    this.chapter.track_url = this.dom.bypassSecurityTrustResourceUrl("https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + this.chapter.track_id + "&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true")
     this.prefixer = 0;
-    if (!this.chapter.extra){
-      for (var i = 0; i < chapterNumber ; i++) {
-        this.prefixer += Bordas[navParams.data.bordaIndex].chapters[i].lines.length;
+    if (navParams.data.full_peotry){
+      var fullPeotryLines = [];
+      for(var i=0; i < Bordas[navParams.data.bordaIndex].chapters.length; i++){
+        if(!Bordas[navParams.data.bordaIndex].chapters[i]['extra']){
+          for(var j=0; j < Bordas[navParams.data.bordaIndex].chapters[i].lines.length; j++){
+            fullPeotryLines.push(Bordas[navParams.data.bordaIndex].chapters[i].lines[j])
+          }
+        }
+      }
+      this.chapter = {
+        name: Bordas[navParams.data.bordaIndex].desc,
+        desc: Bordas[navParams.data.bordaIndex].name,
+        lines: fullPeotryLines,
+        full_peotry: true
+      }
+    }else{
+      var chapterNumber = +navParams.data.index;
+      this.previousChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber- 1];
+      this.chapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber];
+      this.nextChapter = Bordas[navParams.data.bordaIndex].chapters[chapterNumber + 1];
+      this.chapter.track_url = this.dom.bypassSecurityTrustResourceUrl("https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + this.chapter.track_id + "&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true")
+      if (!this.chapter.extra){
+        for (var i = 0; i < chapterNumber ; i++) {
+          this.prefixer += Bordas[navParams.data.bordaIndex].chapters[i].lines.length;
+        }
       }
     }
     this.intro = [
@@ -70,6 +87,7 @@ export class ChapterDetails {
       {id: 2, right: 'مولاي صلي وسلم دائما أبدا', left: 'على النبي وأل البيت كلهم'}
     ];
   };
+
   ionViewWillEnter() {
     this._nativeStorage.getItem('fontSize').then(data =>{
       this.fontSize = data ?  data : this.fontSize;
@@ -104,11 +122,11 @@ export class ChapterDetails {
     });
   }
   ionViewDidLoad(){
-    this._toast.show(`إضغط علي البيت لمٌشاركته`, '5000', 'bottom').subscribe(
-      toast => {
-      //  without subscribe method toast is not working on android
-      }
-    );
+    // this._toast.show(`إضغط علي البيت لمٌشاركته`, '5000', 'bottom').subscribe(
+    //   toast => {
+    //   //  without subscribe method toast is not working on android
+    //   }
+    // );
     this.network_exist = this.network.type != 'none';
     this.network.onDisconnect().subscribe(() => {
       this.network_exist = false;

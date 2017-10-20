@@ -3,7 +3,7 @@
     <name>Borda (ثلاثية البردة كعب و البصيري و شوقي)</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="a.aboelllef@gmail.com" href="http://ionicframework.com/">Ahmed Aboelleef</author>
-    <content original-src="index.html" src="http://192.168.1.4:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://192.168.1.4:8100" />
@@ -93,4 +93,6 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.8" />
     <plugin name="cordova-clipboard" spec="~1.0.0" />
     <plugin name="com.telerik.plugins.nativepagetransitions" />
+    <plugin name="cordova-plugin-appavailability" spec="^0.4.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
 </widget>

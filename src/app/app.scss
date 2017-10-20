@@ -54,8 +54,10 @@
 *{
   direction: rtl;
 }
-button{
-  font-size:16px !important;
+ion-navbar{
+  button{
+    font-size:14px !important;
+  }
 }
 .alert-radio-group {
   .button-inner {

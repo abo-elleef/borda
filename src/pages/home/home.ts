@@ -46,21 +46,29 @@ export class HomePage {
     });
   }
 
-
-
   openChapter(index) {
     this.navCtrl.push(ChapterDetails, {
       index: index,
       bordaIndex: this.index,
     })
   }
+
   openSettingsPage(){
     this.navCtrl.push(Settings);
   }
+
   openAboutModal(){
     var modalPage = this.modalCtrl.create(AboutModalPage);
     modalPage.present();
-
   }
+
+  openFullPeotry(){
+    this.navCtrl.push(ChapterDetails, {
+      index: null,
+      bordaIndex: this.index,
+      full_peotry: true,
+    })
+  }
+
 
 }

@@ -7,8 +7,8 @@
 <ion-header class="{{fontFaceClass}} ">
 
   <ion-navbar>
-    <ion-title>
-      <span *ngIf='!chapter.extra'>{{chapter.id}} - </span> {{chapter.desc}}
+    <ion-title >
+      <span *ngIf='!(chapter.extra || chapter.full_peotry)'>{{chapter.id}} - </span> {{chapter.desc}}
     </ion-title>
     <ion-buttons end >
       <button class="clearBG" large (click)="openSettingsPage()">
