@@ -8,6 +8,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import {AboutModalPage} from '../about-modal-page/about-modal-page'
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

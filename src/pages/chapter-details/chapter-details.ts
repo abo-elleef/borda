@@ -10,7 +10,9 @@ import { Toast } from '@ionic-native/toast';
 import { AdMob } from '@ionic-native/admob';
 import {DomSanitizer} from '@angular/platform-browser';
 import { NativeStorage } from '@ionic-native/native-storage';
-import {AboutModalPage} from '../about-modal-page/about-modal-page'
+import {AboutModalPage} from '../about-modal-page/about-modal-page';
+import domtoimage from 'dom-to-image';
+
 
 
 interface AdMobType {
@@ -34,6 +36,8 @@ interface AdMobType {
   providers:[SocialSharing, Clipboard, Toast]
 })
 export class ChapterDetails {
+  num:number = 0;
+  count:number = 0;
   chapter: any;
   nextChapter: any;
   previousChapter: any;
@@ -137,18 +141,30 @@ export class ChapterDetails {
       }, 1500);
     });
   }
-  shareFB(message){
-    message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
-    this._toast.show(`تم نسخ البيت . قم بلصقه للمشاركة علي الفيس بوك`, '5000', 'bottom').subscribe(
-      toast => {
-        //  without subscribe method toast is not working on android
-      }
-    );
-    this._clipboard.copy(message);
+  shareFB(index){
+    // message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
+    // this._toast.show(`تم نسخ البيت . قم بلصقه للمشاركة علي الفيس بوك`, '5000', 'bottom').subscribe(
+    //   toast => {
+    //     //  without subscribe method toast is not working on android
+    //   }
+    // );
+    // this._clipboard.copy(message);
     var that  = this ;
-    setTimeout(function(){
-      that._sharer.share(message,null, null, 'https://goo.gl/Q25Nq3');
-    },1500)
+    // setTimeout(function(){
+    //   that._sharer.share(message,null, null, 'https://goo.gl/Q25Nq3');
+    // },1500)
+    var node = document.getElementById(this.chapter.name + '-' + index);
+    var nodes = node.querySelectorAll('p');
+    for (this.num = 0; this.num < nodes.length; this.num++) {
+      nodes[this.num].style.fontSize = '40px;';
+    }
+    domtoimage.toPng(node,{width: 500,height: 250})
+      .then(function (dataUrl) {
+        that._sharer.share(null, 'text', dataUrl);
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', JSON.stringify({message: error.message, stack: error.stack}));
+      });
   }
   openNextChapter(index){
     this.admob.showInterstitial();

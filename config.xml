@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.borda215096" version="0.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Borda (ثلاثية البردة كعب و البصيري و شوقي)</name>
+<widget id="com.ionicframework.borda215096" version="0.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ElBurda (بردة المديح)</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="a.aboelllef@gmail.com" href="http://ionicframework.com/">Ahmed Aboelleef</author>
     <content src="index.html" />

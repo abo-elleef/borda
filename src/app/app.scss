@@ -15,18 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @import '../assets/fonts/mry-kacstqurn.ttf';
-//@font-face {
-//  font-family: 'kufi-bold';
-//  src: url('../assets/fonts/droidkufi-bold.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
-@font-face {
- font-family: 'cairo';
- src: url('../assets/fonts/Cairo-Regular.ttf') format('ttf');
- font-weight: normal;
- font-style: normal;
-}
+
 @font-face {
  font-family: 'kufi';
  src: url('../assets/fonts/DroidKufi-Regular.otf') ;
@@ -38,12 +27,6 @@
  src: url('../assets/fonts/amiri-quran.otf') ;
  font-weight: normal;
  font-style: normal;
-}
-@font-face {
-  font-family: 'sg';
-  src: url('../assets/fonts/segoeuil.woff') ;
-  font-weight: normal;
-  font-style: normal;
 }
 @font-face {
   font-family: 'uthmani';
@@ -85,9 +68,7 @@ ion-navbar{
 }
 .kufi, .kufi *{ font-family: 'kufi' ;}
 .amiri, .amiri *{ font-family: 'amiri' ;}
-.cairo, .cairo *{ font-family: 'cairo';}
 .uthmani, .uthmani *{ font-family: 'uthmani';}
-.sg, .sg *{ font-family: 'sg';}
 
 
 
