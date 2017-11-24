@@ -31,9 +31,8 @@
     </span>
   </div>
   <ion-card padding *ngFor="let line of chapter.lines; let index = index;" id="{{chapter.name}}-{{index}}"
-            (click)="shareFB(index)">
+            (click)="shareFB(line)">
     <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
-      <!--<p class="separator"> .. {{prefixer + index + 1}} .. </p>-->
       <p class="clear" float-right>{{line.right}}</p>
       <p class="clear" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
     </ion-card-content>
@@ -48,4 +47,14 @@
       السابق
     </button>
   </div>
+  <div id="share_list" class="share">
+    <ion-card padding *ngFor="let line of share_list; let index = index;">
+      <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
+        <p class="clear" float-right>{{line.right}}</p>
+        <p class="clear" float-left>{{line.left}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
 </ion-content>

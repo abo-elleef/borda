@@ -1,9 +1,3 @@
-<!--
-  Generated template for the Intro page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header class="{{fontFaceClass}}">
 
   <ion-navbar>
@@ -17,15 +11,12 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content class="customGreen {{fontFaceClass}} {{fontSize}}" >
   <ion-card   *ngFor="let borda of bordas; let index = index;"
              (click)="openHomePage(index)"
-             class='ripple'
-             >
+             class='ripple'>
     <ion-card-header padding>
       <ion-icon name="ios-book"></ion-icon>
       {{borda.author}}
@@ -34,21 +25,4 @@
       {{borda.desc}}
     </ion-card-content>
   </ion-card>
-
-  <!--<ion-card  padding text-center	(click)="openHomePage()">-->
-    <!--البردة المباركة-->
-  <!--</ion-card>-->
-
-  <!--<ion-card padding text-center	(click)="openNahgBordaPage()">-->
-    <!--القصيدة المقبولة (نهج البردة)-->
-  <!--</ion-card>-->
-  <!--<ion-card padding text-center	(click)="openMohmadyaPage()">-->
-    <!--القصيدة المحمدية-->
-  <!--</ion-card>-->
-  <!--<ion-card padding text-center	(click)="openModarayaPage()">-->
-<!--القصيدة المضرية-->
-  <!--</ion-card>-->
-
-
-
 </ion-content>
