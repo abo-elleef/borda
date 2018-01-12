@@ -17,7 +17,7 @@
       <ion-icon name="ios-book"></ion-icon>
       <span *ngIf='!chapter.extra && false'>{{chapter.id}} - </span> {{chapter.desc}}
   </ion-card>
-  <ion-card padding (click)="openFullPeotry()">
+  <ion-card padding (click)="openFullPeotry()" *ngIf="borda.chapters.length > 1">
     <ion-icon name="ios-book"></ion-icon>
     {{borda.name}} (كاملة)
   </ion-card>

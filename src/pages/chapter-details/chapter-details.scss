@@ -1,4 +1,17 @@
 page-chapter-details {
+  ion-card{
+    background: $lighter-background !important;
+    padding-top: 8px !important;
+    p{
+      margin-bottom: 0px;
+      margin-top: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+  .selected{
+    background: $light-green !important;
+  }
 }
 
 @media screen and (orientation:landscape) {

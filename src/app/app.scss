@@ -55,7 +55,6 @@ ion-navbar{
 }
 .customGreen{
   background: #f0fff0;
-    //rgb(191, 255, 191);
 }
 .clearBG{
   background: rgba(255, 255, 255, 0);
@@ -91,7 +90,7 @@ ion-navbar{
 
 .share{
   width: 1100px;
-  height: 275px;
+  height: auto;
 }
 .share *{
   font-size: 70px !important;
@@ -107,7 +106,6 @@ ion-navbar{
 }
 ion-card{
   background: $lighter-background !important;
-  padding-top: 8px !important;
 }
 ion-icon{
   font-family: "Ionicons" !important;

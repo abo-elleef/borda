@@ -35,9 +35,11 @@ interface AdMobType {
 })
 export class ChapterDetails {
   share_list = [];
+  filteredData = [];
   chapter: any;
   nextChapter: any;
   previousChapter: any;
+  search_text: string;
   intro: any;
   prefixer: number;
   fontSize: string = Styling.fontSize;
@@ -82,6 +84,7 @@ export class ChapterDetails {
         }
       }
     }
+    this.filteredData = this.chapter.lines;
     this.intro = [
       {id: 1, right: 'مولاي صلي وسلم دائما أبدا', left: 'علي حيبيك خير الخلق كلهم'},
       {id: 2, right: 'مولاي صلي وسلم دائما أبدا', left: 'على النبي وأل البيت كلهم'}
@@ -96,6 +99,7 @@ export class ChapterDetails {
       this.fontFaceClass = data ? data : this.fontFaceClass
     });
     var admobid: AdMobType;
+    this.share_list = [];
     if (/(android)/i.test(navigator.userAgent)) {
       admobid = { // for Android
         banner: 'ca-app-pub-2772630944180636/3185523871',
@@ -139,27 +143,57 @@ export class ChapterDetails {
     });
   }
 
-  shareFB(line) {
+  toggleSelection(line) {
+    line.selected = !line.selected
+    if (line.selected) {
+      this.share_list.push(line)
+    } else {
+      this.share_list.splice(this.share_list.indexOf(line), 1)
+    }
+    ;
+  }
+
+  shareFB(lines) {
     var that = this;
-    that.share_list = [line];
+    that.share_list = lines;
     // message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
-    setTimeout(function(){
+    setTimeout(function () {
       // that._sharer.share(message,null, null, 'https://goo.gl/Q25Nq3');
       var node = document.getElementById('share_list');
       domtoimage.toPng(node)
         .then(function (dataUrl) {
           that._sharer.share(null, 'text', dataUrl)
+          for (var i = 0; i < that.share_list.length; i++) {
+            that.share_list[i].selected = false;
+          }
           that.share_list = [];
         })
         .catch(function (error) {
           console.error('oops, something went wrong!', JSON.stringify({message: error.message, stack: error.stack}));
         });
-    },500)
+    }, 500)
     this._toast.show(`جاري إنشاء الصورة....`, '5000', 'bottom').subscribe(
       toast => {
         //  without subscribe method toast is not working on android
       }
     );
+  }
+
+  onSearchInput(event) {
+    var simplifyArabic  = function (str) {
+      return str.replace(new RegExp(String.fromCharCode(1617, 124, 1614, 124, 1611, 124, 1615, 124, 1612, 124, 1616, 124, 1613, 124, 1618), "g"), "");
+    };
+    this.filteredData = [];
+    for (var i = 0; i < this.chapter.lines.length; i++) {
+      console.log(this.chapter.lines[i]['right'])
+      if (simplifyArabic(this.chapter.lines[i]['left']).search(this.search_text) > -1 || simplifyArabic(this.chapter.lines[i]['right']).search(this.search_text) > -1) {
+        this.filteredData.push(this.chapter.lines[i])
+      }
+    }
+  }
+
+  onSearchCancel() {
+    this.filteredData = this.chapter.lines
   }
 
   openNextChapter(index) {
