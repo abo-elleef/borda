@@ -41,7 +41,9 @@ export class ChapterDetails {
   previousChapter: any;
   search_text: string;
   intro: any;
+  searchActive: Boolean=false;
   prefixer: number;
+  hideTitle: Boolean=false;
   fontSize: string = Styling.fontSize;
   fontFaceClass: string = Styling.fontFace;
   network_exist: Boolean;
@@ -185,7 +187,6 @@ export class ChapterDetails {
     };
     this.filteredData = [];
     for (var i = 0; i < this.chapter.lines.length; i++) {
-      console.log(this.chapter.lines[i]['right'])
       if (simplifyArabic(this.chapter.lines[i]['left']).search(this.search_text) > -1 || simplifyArabic(this.chapter.lines[i]['right']).search(this.search_text) > -1) {
         this.filteredData.push(this.chapter.lines[i])
       }
@@ -193,7 +194,9 @@ export class ChapterDetails {
   }
 
   onSearchCancel() {
-    this.filteredData = this.chapter.lines
+    this.searchActive = false;
+    this.hideTitle = false;
+    this.filteredData = this.chapter.lines;
   }
 
   openNextChapter(index) {
@@ -225,8 +228,11 @@ export class ChapterDetails {
   openAboutModal() {
     var modalPage = this.modalCtrl.create(AboutModalPage);
     modalPage.present();
-
   }
+  activateSearch(){
+    this.searchActive = true
+    this.hideTitle = true;
+  };
 
   showVideo() {
     console.log('ad clicked');

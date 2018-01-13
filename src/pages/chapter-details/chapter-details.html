@@ -7,16 +7,28 @@
 <ion-header class="{{fontFaceClass}} ">
 
   <ion-navbar>
-    <ion-title >
+    <ion-title *ngIf="!hideTitle">
       <span *ngIf='!(chapter.extra || chapter.full_peotry)'>{{chapter.id}} - </span> {{chapter.desc}}
     </ion-title>
-    <ion-buttons end *ngIf="!share_list.length">
+    <ion-buttons end *ngIf="!share_list.length && !searchActive">
       <button class="clearBG" large (click)="openSettingsPage()">
-        <ion-icon name="settings"></ion-icon>
+        <ion-icon name="ios-settings-outline"></ion-icon>
       </button>
       <button class="clearBG" large (click)="openAboutModal()">
-        <ion-icon name="information-circle"></ion-icon>
+        <ion-icon name="ios-information-circle-outline"></ion-icon>
       </button>
+      <button class="clearBG" large (click)="activateSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="searchActive">
+      <ion-searchbar class="customGreen"
+                     [(ngModel)]="search_text"
+                     placeholder="ابحث"
+                     [showCancelButton]="true"
+                     (ionInput)="onSearchInput($event)"
+                     (ionCancel)="onSearchCancel($event)">
+      </ion-searchbar>
     </ion-buttons>
     <ion-buttons end *ngIf="share_list.length" >
       <button class="clearBG" large (click)="shareFB(share_list)">
@@ -28,27 +40,34 @@
 </ion-header>
 
 
-<ion-content class="customGreen">
+<ion-content class="{{fontFaceClass}} {{fontSize}}">
   <div *ngIf="network_exist">
     <span *ngIf="chapter.track_id">
       <iframe width="100%" height="150" scrolling="no" frameborder="no"
               [src]="chapter.track_url"></iframe>
     </span>
   </div>
-  <ion-searchbar class="customGreen"
-    [(ngModel)]="search_text"
-    placeholder="ابحث"
-    [showCancelButton]="true"
-    (ionInput)="onSearchInput($event)"
-    (ionCancel)="onSearchCancel($event)">
-  </ion-searchbar>
-  <ion-card padding *ngFor="let line of filteredData; let index = index;" id="{{chapter.name}}-{{index}}"
-            on-hold="shareFB([line])" (click)="toggleSelection(line)" [ngClass]="line.selected && share_list.length ? ' selected ' : ''">
-    <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
-      <p class="clear" float-right>{{line.right}}</p>
-      <p class="clear" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>
-    </ion-card-content>
-  </ion-card>
+
+  <!--<ion-scroll scrollY="true" style="height: 100%">-->
+  <!--</ion-scroll>-->
+    <ion-list inset>
+      <button ion-item *ngFor="let line of filteredData; let index = index;"
+              on-hold="shareFB([line])" (click)="toggleSelection(line)" [ngClass]="line.selected && share_list.length ? ' selected ' : ''">
+        <span class="lineIndex">{{index+1}}</span>
+          {{line.right}}
+        <br/>
+          {{line.left}}
+      </button>
+    </ion-list>
+  <!---->
+  <!--<ion-card padding *ngFor="let line of filteredData; let index = index;" id="{{chapter.name}}-{{index}}"-->
+            <!--on-hold="shareFB([line])" (click)="toggleSelection(line)" [ngClass]="line.selected && share_list.length ? ' selected ' : ''">-->
+    <!--<ion-card-content class="{{fontFaceClass}} {{fontSize}}">-->
+      <!--<p class="clear" float-right>{{line.right}}</p>-->
+      <!--<p class="clear" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>-->
+    <!--</ion-card-content>-->
+  <!--</ion-card>-->
+  <!---->
   <div padding class="clear {{fontFaceClass}}" >
     <button ion-button icon-left round float-left (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
       التالي

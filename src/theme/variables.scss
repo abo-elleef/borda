@@ -32,24 +32,44 @@ $font-path: "../assets/fonts";
 //);
 //(0, 100, 0)
 //$dark-green: #376A2F;
-$dark-green: rgb(20,90,20);
-$light-green:rgb(191, 255, 191);
-$lighter-background: rgb(220,255,220);
+//$dark-green: rgb(20,90,20);
+//$light-green:rgb(191, 255, 191);
+//$lighter-background: rgb(220,255,220);
+//$colors: (
+//  primary:    ($dark-green),
+//  secondary:  #32db64,
+//  danger:     #f53d3d,
+//  light:      #f4f4f4,
+//  dark:       #222
+//);
+$titles-color: #FFFFFF;
+$text-color: #1e1e1e;
+$list-title-color: #107d15;
+$primary: #4caf50;
+$primary-dark: #39833c;
+$player-color: #4caf50;
+$background-color: #ecf1ed;
+
 $colors: (
-  primary:    ($dark-green),
+  primary:   $primary ,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
+$searchbar-md-background-color: $primary-dark;
+$searchbar-md-input-border-radius: 2px;
 
-$toolbar-ios-background:($dark-green);
-$toolbar-md-background: ($dark-green);
-$toolbar-wp-background: ($dark-green);
-$tabs-background:($dark-green);
-$tabs-md-tab-color-active: ($light-green);
+$searchbar-md-input-clear-icon-color: $primary-dark;
+
+
+$toolbar-ios-background:( $primary);
+$toolbar-md-background: ( $primary);
+$toolbar-wp-background: ( $primary);
+$tabs-background:( $primary);
+$tabs-md-tab-color-active: ($primary);
 $tabs-md-tab-color-inactive: #000;
-$toolbar-md-title-text-color	:($light-green);
+$toolbar-md-title-text-color	:($titles-color);
 
 // App iOS Variables
 // --------------------------------------------------

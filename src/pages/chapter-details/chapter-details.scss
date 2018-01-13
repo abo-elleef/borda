@@ -1,20 +1,41 @@
 page-chapter-details {
-  ion-card{
-    background: $lighter-background !important;
-    padding-top: 8px !important;
-    p{
-      margin-bottom: 0px;
-      margin-top: 0px;
-      padding-top: 0px;
-      padding-bottom: 0px;
+  .lineIndex{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    //color: $titles-color;
+    color: $primary-dark;
+    padding: 0px 5px;
+    font-size: 14px !important;
+  }
+  .selected {
+    .label {
+      background: $primary !important;
     }
   }
-  .selected{
-    background: $light-green !important;
+  .searchbar-md-cancel *{
+      color: $primary-dark !important;
+  }
+
+  .label {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .item {
+    background: $titles-color;
+
+  }
+  .item-inner {
+    text-align: center;
+    border-bottom: none !important;
+    padding-bottom: 0px;
   }
 }
 
-@media screen and (orientation:landscape) {
+@media screen and (orientation: landscape) {
   page-chapter-details {
   }
 }

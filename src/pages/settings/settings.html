@@ -13,40 +13,22 @@
 </ion-header>
 
 
-<ion-content class="customGreen">
-  <!--<ion-list>-->
-    <!--<ion-item class="customDarkGreen">-->
-      <!--<ion-label class="kufi">-->
-        <!--شكل الخط-->
-      <!--</ion-label>-->
-      <!--<ion-select [(ngModel)]="fontFaceClass" cancelText='إلغاء' okText='تثبيت' (ionChange)="changeFont(fontFaceClass)">-->
-        <!--<ion-option value="amiri" class='amiri'>الأميري</ion-option>-->
-        <!--<ion-option value="kufi" class='kufi'>الكوفي</ion-option>-->
-         <!--&lt;!&ndash;<ion-option value="cairo"> القاهري</ion-option>&ndash;&gt;-->
-        <!--<ion-option value="uthmani" class='uthmani'>العثماني</ion-option>-->
-        <!--&lt;!&ndash;<ion-option value="sg" class='sg'>scriptx</ion-option>&ndash;&gt;-->
+<ion-content class="{{fontFaceClass}} {{fontSize}}">
+  <!--<ion-card padding>-->
+    <!--<ion-card-content class="{{fontFaceClass}} {{fontSize}}">-->
+      <!--<p class="clear" float-right>يا ربِّ بالمصطفى بلِّغْ مقاصدنا</p>-->
+      <!--<p class="clear" float-left> واغفرْ لنا ما مضى يا واسع الكرم </p>-->
+    <!--</ion-card-content>-->
+  <!--</ion-card>-->
+  <ion-list inset>
+    <button ion-item text-center>
+      يا ربِّ بالمصطفى بلِّغْ مقاصدنا
+      <br/>
+      واغفرْ لنا ما مضى يا واسع الكرم
+    </button>
+  </ion-list>
 
-      <!--</ion-select>-->
-    <!--</ion-item>-->
-    <!--<ion-item class="customDarkGreen">-->
-      <!--<ion-label class="kufi">-->
-        <!--حجم الخط-->
-      <!--</ion-label>-->
-      <!--<ion-select [(ngModel)]="fontSize" cancelText='إلغاء' okText='تثبيت' (ionChange)="changeFontSize(fontSize)">-->
-        <!--<ion-option value="largeFont">كبير</ion-option>-->
-        <!--<ion-option value="normalFont">طبيعي</ion-option>-->
-        <!--<ion-option value="smallFont">صغير</ion-option>-->
-      <!--</ion-select>-->
-    <!--</ion-item>-->
-  <!--</ion-list>-->
-  <ion-card padding>
-    <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
-      <p class="clear" float-right>يا ربِّ بالمصطفى بلِّغْ مقاصدنا</p>
-      <p class="clear" float-left>واغفرْ لنا ما مضى يا واسع الكرم</p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="customGreen">
+  <ion-card class="">
     <ion-card-header (click)="toggleFontSizeContent()">
       <ion-label class="bold" float-right>حجم الخط</ion-label>
       <ion-label float-left>{{fontSizeString}}</ion-label>

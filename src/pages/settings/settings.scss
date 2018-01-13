@@ -1,8 +1,18 @@
 page-settings {
   ion-label{
   }
-  ion-card{
-    background: $lighter-background !important;
+  //ion-card{
+  //  background: $titles-color !important;
+  //}
+  .item {
+    background: $titles-color;
+
+  }
+  .list{
+    .item-inner {
+      border-bottom: none !important;
+      padding-bottom: 0px;
+    }
   }
   .example{
     background-color: #c5c5c5 !important;

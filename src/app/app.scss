@@ -39,7 +39,7 @@
 }
 ion-navbar{
   button{
-    font-size:14px !important;
+    font-size: 16px !important;
   }
 }
 .alert-radio-group {
@@ -50,11 +50,11 @@ ion-navbar{
 }
 
 .customDarkGreen{
-  background: $dark-green;
-  color: $light-green;
+  background: $primary;
+  color: $titles-color;
 }
 .customGreen{
-  background: #f0fff0;
+  background: $primary;
 }
 .clearBG{
   background: rgba(255, 255, 255, 0);
@@ -105,11 +105,22 @@ ion-navbar{
   .smallFont, .smallFont * { font-size: 16px !important;line-height: 1.25;}
 }
 ion-card{
-  background: $lighter-background !important;
+  background: $titles-color !important;
+  border-radius: 15px !important;
+
+}
+ion-card-header{
+  color: $primary !important;
+  font-weight: bolder;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+ion-card-content{
+  color: $text-color !important;
 }
 ion-icon{
   font-family: "Ionicons" !important;
-  color: $light-green;
+  color: $titles-color;
 }
 ion-modal {
     background-color: rgba(0, 0, 0, 0.75);
