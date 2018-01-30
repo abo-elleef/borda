@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ChapterDetails page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header class="{{fontFaceClass}} ">
 
   <ion-navbar>
@@ -18,7 +12,7 @@
         <ion-icon name="ios-information-circle-outline"></ion-icon>
       </button>
       <button class="clearBG" large (click)="activateSearch()">
-        <ion-icon name="search"></ion-icon>
+        <ion-icon name="ios-search-outline"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end *ngIf="searchActive">
@@ -30,7 +24,7 @@
                      (ionCancel)="onSearchCancel($event)">
       </ion-searchbar>
     </ion-buttons>
-    <ion-buttons end *ngIf="share_list.length" >
+    <ion-buttons end *ngIf="share_list.length">
       <button class="clearBG" large (click)="shareFB(share_list)">
         <ion-icon name="share"></ion-icon>
       </button>
@@ -41,50 +35,44 @@
 
 
 <ion-content class="{{fontFaceClass}} {{fontSize}}">
-  <div *ngIf="network_exist">
-    <span *ngIf="chapter.track_id">
-      <iframe width="100%" height="150" scrolling="no" frameborder="no"
+  <div *ngIf="network_exist && chapter.track_id">
+    <iframe width="100%" height="150" scrolling="no" frameborder="no"
               [src]="chapter.track_url"></iframe>
-    </span>
   </div>
 
-  <!--<ion-scroll scrollY="true" style="height: 100%">-->
-  <!--</ion-scroll>-->
-    <ion-list inset>
-      <button ion-item *ngFor="let line of filteredData; let index = index;"
-              on-hold="shareFB([line])" (click)="toggleSelection(line)" [ngClass]="line.selected && share_list.length ? ' selected ' : ''">
-        <span class="lineIndex">{{index+1}}</span>
-          {{line.right}}
-        <br/>
-          {{line.left}}
-      </button>
-    </ion-list>
-  <!---->
-  <!--<ion-card padding *ngFor="let line of filteredData; let index = index;" id="{{chapter.name}}-{{index}}"-->
-            <!--on-hold="shareFB([line])" (click)="toggleSelection(line)" [ngClass]="line.selected && share_list.length ? ' selected ' : ''">-->
-    <!--<ion-card-content class="{{fontFaceClass}} {{fontSize}}">-->
-      <!--<p class="clear" float-right>{{line.right}}</p>-->
-      <!--<p class="clear" float-left>{{line.left}} <span *ngIf="line.count">({{line.count}})</span></p>-->
-    <!--</ion-card-content>-->
-  <!--</ion-card>-->
-  <!---->
-  <div padding class="clear {{fontFaceClass}}" >
+  <ion-list inset>
+    <button ion-item *ngFor="let line of filteredData; let index = index;"
+            on-hold="shareFB([line])" (click)="toggleSelection(line)"
+            [ngClass]="line.selected && share_list.length ? ' selected ' : ''">
+      <span class="lineIndex">{{index+1}}</span>
+      {{line.right}}
+      <br/>
+      {{line.left}}
+    </button>
+  </ion-list>
+  <div padding class="clear {{fontFaceClass}}">
     <button ion-button icon-left round float-left (click)="openNextChapter(chapter.id)" *ngIf="nextChapter">
       التالي
       <ion-icon name="arrow-dropleft-circle"></ion-icon>
     </button>
-    <button ion-button icon-right round float-right  (click)="openPreviousChapter(previousChapter.id)" *ngIf="previousChapter">
+    <button ion-button icon-right round float-right (click)="openPreviousChapter(previousChapter.id)"
+            *ngIf="previousChapter">
       <ion-icon name="arrow-dropright-circle"></ion-icon>
       السابق
     </button>
   </div>
-  <div id="share_list" class="share">
-    <ion-card padding *ngFor="let line of share_list; let index = index;">
-      <ion-card-content class="{{fontFaceClass}} {{fontSize}}">
-        <p class="clear" float-right>{{line.right}}</p>
-        <p class="clear" float-left>{{line.left}}</p>
-      </ion-card-content>
-    </ion-card>
+  <div id="share_list" class="clear {{share_class}}">
+    <ion-list inset class="selected {{fontFaceClass}}">
+      <button ion-item *ngFor="let line of share_list; let index = index;">
+        {{line.right}}
+        <br/>
+        {{line.left}}
+      </button>
+    </ion-list>
+    <div class="clear block">
+      <img class="logo" src="assets/images/icon.png" alt="">
+      <span class="download-statement {{fontFaceClass}}"> حمل تطبيق البردة لأجهزة الأندرويد وأجعلها معك أينما كنت</span>
+    </div>
   </div>
 
 

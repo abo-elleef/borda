@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.borda215096" version="0.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.borda215096" version="0.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>البردة</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <description>قصيدة البردة المباركة  للإمام محمد البصيري و معارضاتها الشعرية</description>
     <author email="a.aboelllef@gmail.com" href="http://ionicframework.com/">Ahmed Aboelleef</author>
     <content src="index.html" />
     <access origin="*" />

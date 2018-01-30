@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <ion-title>القصائد</ion-title>
-    <ion-buttons end >
+    <ion-buttons end>
       <button class="clearBG" large (click)="openSettingsPage()">
         <ion-icon name="ios-settings-outline"></ion-icon>
       </button>
@@ -13,12 +13,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="texture_image {{fontFaceClass}} {{fontSize}}" >
-  <ion-card   *ngFor="let borda of bordas; let index = index;"
-             (click)="openHomePage(index)">
+<ion-content class="texture_image {{fontFaceClass}} {{fontSize}}">
+  <ion-card *ngFor="let borda of bordas; let index = index;"
+            (click)="openHomePage(index)">
     <ion-card-header>
-      <ion-icon name="ios-book"></ion-icon>
-      {{borda.author}}
+      <img class="book-icon" src="assets/images/book.png" alt=""/>
+      <label class="borda-card-title">{{borda.author}}</label>
+      <!--<ion-icon name="ios-book"></ion-icon>-->
     </ion-card-header>
     <ion-card-content>
       {{borda.desc}}

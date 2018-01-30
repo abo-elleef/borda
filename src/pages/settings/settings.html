@@ -14,12 +14,6 @@
 
 
 <ion-content class="{{fontFaceClass}} {{fontSize}}">
-  <!--<ion-card padding>-->
-    <!--<ion-card-content class="{{fontFaceClass}} {{fontSize}}">-->
-      <!--<p class="clear" float-right>يا ربِّ بالمصطفى بلِّغْ مقاصدنا</p>-->
-      <!--<p class="clear" float-left> واغفرْ لنا ما مضى يا واسع الكرم </p>-->
-    <!--</ion-card-content>-->
-  <!--</ion-card>-->
   <ion-list inset>
     <button ion-item text-center>
       يا ربِّ بالمصطفى بلِّغْ مقاصدنا
@@ -30,23 +24,25 @@
 
   <ion-card class="">
     <ion-card-header (click)="toggleFontSizeContent()">
-      <ion-label class="bold" float-right>حجم الخط</ion-label>
-      <ion-label float-left>{{fontSizeString}}</ion-label>
+      <div class="single-settings-container">
+        <label class="bold name">حجم الخط</label>
+        <label class="value">{{fontSizeString}}</label>
+      </div>
 
     </ion-card-header>
 
     <ion-card-content class="{{fontSizeContentClass}}">
       <ion-list radio-group [(ngModel)]="fontSize">
         <ion-item class="clearBG">
-          <ion-label class="largeFont" >كبير</ion-label>
+          <ion-label class="largeFont">كبير</ion-label>
           <ion-radio value="largeFont" (click)="changeFontSize('largeFont')"></ion-radio>
         </ion-item>
         <ion-item class="clearBG">
-          <ion-label class="normalFont" >متوسط</ion-label>
+          <ion-label class="normalFont">متوسط</ion-label>
           <ion-radio value="normalFont" (click)="changeFontSize('normalFont')"></ion-radio>
         </ion-item>
         <ion-item class="clearBG">
-          <ion-label class="smallFont" >صغير</ion-label>
+          <ion-label class="smallFont">صغير</ion-label>
           <ion-radio value="smallFont" (click)="changeFontSize('smallFont')"></ion-radio>
         </ion-item>
       </ion-list>
@@ -57,9 +53,10 @@
   <ion-card>
 
     <ion-card-header (click)="toggleFontFaceContent()">
-
-      <ion-label class="bold" float-right>نوع الخط</ion-label>
-      <ion-label float-left>{{fontFaceClassString}}</ion-label>
+      <div class="single-settings-container">
+        <label class="bold name">نوع الخط</label>
+        <label class="value">{{fontFaceClassString}}</label>
+      </div>
     </ion-card-header>
 
     <ion-card-content class="{{fontFaceContentClass}}">

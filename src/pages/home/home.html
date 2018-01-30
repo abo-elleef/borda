@@ -1,12 +1,12 @@
 <ion-header class="{{fontFaceClass}}">
-  <ion-navbar >
-    <ion-title> الفصول </ion-title>
-    <ion-buttons end >
+  <ion-navbar>
+    <ion-title> الفصول</ion-title>
+    <ion-buttons end>
       <button class="clearBG" large (click)="openSettingsPage()">
-        <ion-icon name="settings"></ion-icon>
+        <ion-icon name="ios-settings-outline"></ion-icon>
       </button>
       <button class="clearBG" large (click)="openAboutModal()">
-        <ion-icon name="information-circle"></ion-icon>
+        <ion-icon name="ios-information-circle-outline"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -14,11 +14,16 @@
 
 <ion-content class="texture_image {{fontFaceClass}} {{fontSize}}">
   <ion-card *ngFor="let chapter of borda.chapters; let index = index;" (click)="openChapter(index)">
-      <ion-icon name="ios-book"></ion-icon>
-      <span *ngIf='!chapter.extra && false'>{{chapter.id}} - </span> {{chapter.desc}}
+    <!--<ion-icon name="ios-book"></ion-icon>-->
+    <ion-card-header>
+      <img class="book-icon" src="assets/images/book.png" alt=""/>
+      <label> {{chapter.desc}} </label>
+    </ion-card-header>
   </ion-card>
-  <ion-card  (click)="openFullPeotry()" *ngIf="borda.chapters.length > 1">
-    <ion-icon name="ios-book"></ion-icon>
-    {{borda.name}} (كاملة)
+  <ion-card (click)="openFullPeotry()" *ngIf="borda.chapters.length > 1">
+    <ion-card-header>
+      <img class="book-icon" src="assets/images/book.png" alt=""/>
+      <label> {{borda.name}} (كاملة) </label>
+    </ion-card-header>
   </ion-card>
 </ion-content>

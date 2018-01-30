@@ -47,6 +47,7 @@ export class ChapterDetails {
   fontSize: string = Styling.fontSize;
   fontFaceClass: string = Styling.fontFace;
   network_exist: Boolean;
+  share_class: string= 'hide';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -148,17 +149,19 @@ export class ChapterDetails {
   toggleSelection(line) {
     line.selected = !line.selected
     if (line.selected) {
+      // this.share_class = 'hide';
       this.share_list.push(line)
     } else {
+      // this.share_class= '';
       this.share_list.splice(this.share_list.indexOf(line), 1)
     }
-    ;
   }
 
   shareFB(lines) {
     var that = this;
     that.share_list = lines;
     // message = message + ' #البردة #مدح #سيدنا #النبي  @bordaelmadyh  '
+    that.share_class = '';
     setTimeout(function () {
       // that._sharer.share(message,null, null, 'https://goo.gl/Q25Nq3');
       var node = document.getElementById('share_list');
@@ -168,6 +171,9 @@ export class ChapterDetails {
           for (var i = 0; i < that.share_list.length; i++) {
             that.share_list[i].selected = false;
           }
+          // setTimeout(function(){
+            that.share_class = 'hide';
+          // }, 500);
           that.share_list = [];
         })
         .catch(function (error) {

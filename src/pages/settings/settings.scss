@@ -5,8 +5,22 @@ page-settings {
   //  background: $titles-color !important;
   //}
   .item {
-    background: $titles-color;
+    //background: $titles-color;
 
+  }
+  .single-settings-container{
+    flex: 1;
+  }
+  .name{
+    align-self: flex-start;
+    float: right;
+  }
+  .value{
+    align-self: flex-end;
+    float: left;
+  }
+  ion-card-header{
+    color: $primary !important;
   }
   .list{
     .item-inner {

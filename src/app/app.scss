@@ -59,6 +59,19 @@ ion-navbar{
 .clearBG{
   background: rgba(255, 255, 255, 0);
 }
+ion-content{
+  background: url('../assets/images/bg.png');
+}
+
+.book-icon{
+  margin: 10px 0px 10px 10px;
+  width: 20px !important;
+  display: inline-block;
+}
+
+.red{
+  background: red !important;
+}
 .clear {
    clear: both;
 }
@@ -88,13 +101,7 @@ ion-navbar{
 .normalFont, .normalFont * { font-size: 20px !important; line-height: 2;}
 .smallFont, .smallFont * { font-size: 16px !important;line-height: 2;}
 
-.share{
-  width: 1100px;
-  height: auto;
-}
-.share *{
-  font-size: 70px !important;
-}
+
 @media screen and (orientation:landscape) {
   // relative font sizes
   //.largeFont, .largeFont * { font-size: 5vw !important; line-height: 9vw;}
@@ -110,8 +117,8 @@ ion-card{
 
 }
 ion-card-header{
-  color: $primary !important;
-  font-weight: bolder;
+  display: flex;
+  align-items: center;
   padding-top: 5px !important;
   padding-bottom: 5px !important;
 }
@@ -122,6 +129,7 @@ ion-icon{
   font-family: "Ionicons" !important;
   color: $titles-color;
 }
+
 ion-modal {
     background-color: rgba(0, 0, 0, 0.75);
     ion-content.content{

@@ -1,20 +1,48 @@
 page-chapter-details {
-  .lineIndex{
+  .lineIndex {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 3px;
+    right: 3px;
     //color: $titles-color;
     color: $primary-dark;
     padding: 0px 5px;
     font-size: 14px !important;
   }
-  .selected {
-    .label {
-      background: $primary !important;
+  .hide{
+    display: none;
+  }
+  #share_list {
+    background: $titles-color;
+    position: relative;
+    width: 900px;
+    height: auto;
+
+    .logo {
+      width: 75px;
+      margin: 15px;
+    }
+    .download-statement {
+      color: $primary;
+      position: absolute;
+      left: 20px;
+      bottom: 50px;
+      font-size: 14px;
     }
   }
-  .searchbar-md-cancel *{
-      color: $primary-dark !important;
+  #share_list .item-inner .label {
+    font-size: 70px !important;
+  }
+  .selected {
+    background: $primary !important;
+    .item {
+      background: $primary;
+    }
+    .lineIndex, .label {
+      color: $titles-color;
+    }
+  }
+  .searchbar-md-cancel * {
+    color: $primary-dark !important;
   }
 
   .label {
@@ -31,7 +59,7 @@ page-chapter-details {
   .item-inner {
     text-align: center;
     border-bottom: none !important;
-    padding-bottom: 0px;
+    padding-bottom: 0;
   }
 }
 

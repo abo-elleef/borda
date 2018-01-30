@@ -1,4 +1,4 @@
 export const Styling = {
-    fontFace: 'amiri',
+    fontFace: 'uthmani',
     fontSize: 'normalFont'
 }
