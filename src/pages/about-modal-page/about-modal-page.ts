@@ -33,12 +33,12 @@ export class AboutModalPage {
   }
 
   ionViewWillEnter() {
-    this._nativeStorage.getItem('fontSize').then(data => {
-      this.fontSize = data ? data : this.fontSize;
-    });
-    this._nativeStorage.getItem('fontFace').then(data => {
-      this.fontFaceClass = data ? data : this.fontFaceClass
-    });
+    // this._nativeStorage.getItem('fontSize').then(data => {
+    //   this.fontSize = data ? data : this.fontSize;
+    // });
+    // this._nativeStorage.getItem('fontFace').then(data => {
+    //   this.fontFaceClass = data ? data : this.fontFaceClass
+    // });
   }
   openTwitterPage(){
     this.appAvailability.check('com.twitter.android').then((isApp) => {

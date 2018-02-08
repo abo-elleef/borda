@@ -39,12 +39,12 @@ export class HomePage {
   };
 
   ionViewWillEnter() {
-    this._nativeStorage.getItem('fontSize').then(data =>{
-      this.fontSize = data ?  data : this.fontSize;
-    });
-    this._nativeStorage.getItem('fontFace').then(data => {
-      this.fontFaceClass = data ? data: this.fontFaceClass
-    });
+    // this._nativeStorage.getItem('fontSize').then(data =>{
+    //   this.fontSize = data ?  data : this.fontSize;
+    // });
+    // this._nativeStorage.getItem('fontFace').then(data => {
+    //   this.fontFaceClass = data ? data: this.fontFaceClass
+    // });
   }
 
   openChapter(index) {

@@ -98,7 +98,10 @@ ion-content{
 //.smallFont, .smallFont * { font-size: 3vw !important; line-height: 9vw;}
 //fixed font sizes
 .largeFont, .largeFont * { font-size: 24px !important; line-height: 2;}
-.normalFont, .normalFont * { font-size: 20px !important; line-height: 2;}
+.normalFont, .normalFont * {
+  font-size: 6vw !important;
+  line-height: 2;
+}
 .smallFont, .smallFont * { font-size: 16px !important;line-height: 2;}
 
 
@@ -108,7 +111,12 @@ ion-content{
   //.normalFont, .normalFont * { font-size: 4vw !important; line-height: 5vw;}
   //.smallFont, .smallFont * { font-size: 3vw !important; line-height: 4vw;}
   .largeFont, .largeFont * { font-size: 24px !important; line-height: 1.25;}
-  .normalFont, .normalFont * { font-size: 20px !important; line-height: 1.25;}
+  .normalFont, .normalFont * {
+    //font-size: 24px !important;
+    line-height: 1.25;
+    font-size: 6vw !important;
+    white-space: inherit;
+  }
   .smallFont, .smallFont * { font-size: 16px !important;line-height: 1.25;}
 }
 ion-card{

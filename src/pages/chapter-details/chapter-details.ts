@@ -95,12 +95,12 @@ export class ChapterDetails {
   };
 
   ionViewWillEnter() {
-    this._nativeStorage.getItem('fontSize').then(data => {
-      this.fontSize = data ? data : this.fontSize;
-    });
-    this._nativeStorage.getItem('fontFace').then(data => {
-      this.fontFaceClass = data ? data : this.fontFaceClass
-    });
+    // this._nativeStorage.getItem('fontSize').then(data => {
+    //   this.fontSize = data ? data : this.fontSize;
+    // });
+    // this._nativeStorage.getItem('fontFace').then(data => {
+    //   this.fontFaceClass = data ? data : this.fontFaceClass
+    // });
     var admobid: AdMobType;
     this.share_list = [];
     if (/(android)/i.test(navigator.userAgent)) {
