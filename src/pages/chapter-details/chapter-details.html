@@ -43,7 +43,9 @@
   <ion-list inset>
     <button ion-item *ngFor="let line of filteredData; let index = index;"
             on-hold="shareFB([line])" (click)="toggleSelection(line)"
-            [ngClass]="'text-wrap' + (line.selected && share_list.length ? ' selected ' : '')">
+            [ngClass]="'text-wrap' + (line.selected && share_list.length ? ' selected ' : '')"
+
+    >
       <span class="lineIndex">{{index+1}}</span>
       {{line.right}}
       <br/>

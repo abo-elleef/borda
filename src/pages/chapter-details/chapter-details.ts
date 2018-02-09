@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import {Network} from '@ionic-native/network';
 import {Settings} from "../settings/settings";
 import {SocialSharing} from '@ionic-native/social-sharing';
@@ -12,6 +12,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {NativeStorage} from '@ionic-native/native-storage';
 import {AboutModalPage} from '../about-modal-page/about-modal-page';
 import domtoimage from 'dom-to-image';
+import { Insomnia } from '@ionic-native/insomnia';
+
+
+
 
 
 interface AdMobType {
@@ -31,7 +35,7 @@ interface AdMobType {
 @Component({
   selector: 'page-chapter-details',
   templateUrl: 'chapter-details.html',
-  providers: [SocialSharing, Clipboard, Toast]
+  providers: [SocialSharing, Clipboard, Toast, Insomnia]
 })
 export class ChapterDetails {
   share_list = [];
@@ -41,13 +45,13 @@ export class ChapterDetails {
   previousChapter: any;
   search_text: string;
   intro: any;
-  searchActive: Boolean=false;
+  searchActive: Boolean = false;
   prefixer: number;
-  hideTitle: Boolean=false;
+  hideTitle: Boolean = false;
   fontSize: string = Styling.fontSize;
   fontFaceClass: string = Styling.fontFace;
   network_exist: Boolean;
-  share_class: string= 'hide';
+  share_class: string = 'hide';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -58,6 +62,7 @@ export class ChapterDetails {
               private _toast: Toast,
               private admob: AdMob,
               private dom: DomSanitizer,
+              private insomnia: Insomnia,
               private _nativeStorage: NativeStorage) {
     this.prefixer = 0;
     if (navParams.data.full_peotry) {
@@ -101,6 +106,8 @@ export class ChapterDetails {
     // this._nativeStorage.getItem('fontFace').then(data => {
     //   this.fontFaceClass = data ? data : this.fontFaceClass
     // });
+    this.insomnia.keepAwake();
+
     var admobid: AdMobType;
     this.share_list = [];
     if (/(android)/i.test(navigator.userAgent)) {
@@ -147,13 +154,18 @@ export class ChapterDetails {
   }
 
   toggleSelection(line) {
-    line.selected = !line.selected
-    if (line.selected) {
-      // this.share_class = 'hide';
-      this.share_list.push(line)
+    if (this.searchActive) {
+      // let yOffset = document.getElementById('item_'+line.id).offsetTop;
+      // document.getElementById('item').scrollTo(0, yOffset, 4000);
     } else {
-      // this.share_class= '';
-      this.share_list.splice(this.share_list.indexOf(line), 1)
+      line.selected = !line.selected
+      if (line.selected) {
+        // this.share_class = 'hide';
+        this.share_list.push(line)
+      } else {
+        // this.share_class= '';
+        this.share_list.splice(this.share_list.indexOf(line), 1)
+      }
     }
   }
 
@@ -172,7 +184,7 @@ export class ChapterDetails {
             that.share_list[i].selected = false;
           }
           // setTimeout(function(){
-            that.share_class = 'hide';
+          that.share_class = 'hide';
           // }, 500);
           that.share_list = [];
         })
@@ -188,7 +200,7 @@ export class ChapterDetails {
   }
 
   onSearchInput(event) {
-    var simplifyArabic  = function (str) {
+    var simplifyArabic = function (str) {
       return str.replace(new RegExp(String.fromCharCode(1617, 124, 1614, 124, 1611, 124, 1615, 124, 1612, 124, 1616, 124, 1613, 124, 1618), "g"), "");
     };
     this.filteredData = [];
@@ -235,7 +247,8 @@ export class ChapterDetails {
     var modalPage = this.modalCtrl.create(AboutModalPage);
     modalPage.present();
   }
-  activateSearch(){
+
+  activateSearch() {
     this.searchActive = true
     this.hideTitle = true;
   };

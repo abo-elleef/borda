@@ -5,6 +5,7 @@ import {Settings} from "../settings/settings";
 import {Bordas} from '../../services/borda';
 import { Styling} from '../../services/Globals';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { StatusBar } from '@ionic-native/status-bar';
 // import {ChapterDetails} from "../chapter-details/chapter-details";
 // import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 import {AboutModalPage} from '../about-modal-page/about-modal-page'
@@ -32,7 +33,8 @@ import {AboutModalPage} from '../about-modal-page/about-modal-page'
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private _nativeStorage: NativeStorage,
-    private _alert: AlertController
+    private _alert: AlertController,
+    private statusBar: StatusBar
     ) {
     this.bordas = Bordas
 }
@@ -47,6 +49,9 @@ ionViewWillEnter() {
     // this._nativeStorage.getItem('fontFace').then(data => {
     //   this.fontFaceClass = data ? data: this.fontFaceClass
     // });
+  // let status bar overlay webview
+  this.statusBar.overlaysWebView(true);
+  this.statusBar.backgroundColorByHexString('#4caf50');
 }
 // ionViewWillLeave() {
 
